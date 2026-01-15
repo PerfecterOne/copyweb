@@ -1,0 +1,233 @@
+{
+  "header": {
+    "id": "header",
+    "brand": {
+      "title": "CopyWeb",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "CopyWeb - 网站代码生成器",
+        "width": 100,
+        "height": 100
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "功能亮点",
+          "url": "/#features",
+          "icon": "Sparkles"
+        },
+        {
+          "title": "案例展示",
+          "url": "/showcases",
+          "icon": "Box"
+        },
+        {
+          "title": "价格",
+          "url": "/pricing",
+          "icon": "DollarSign"
+        },
+        {
+          "title": "工具",
+          "icon": "RiRobot2Line",
+          "children": [
+            {
+              "title": "URL 转代码",
+              "description": "从任意网站 URL 生成代码",
+              "url": "/url-to-code",
+              "icon": "RiLinkM"
+            },
+            {
+              "title": "截图转代码",
+              "description": "将截图转换为 HTML/CSS 代码",
+              "url": "/screenshot-to-code",
+              "icon": "RiImage2Line"
+            },
+            {
+              "title": "Figma 转代码",
+              "description": "将 Figma 设计转换为代码",
+              "url": "/figma-to-code",
+              "icon": "RiFigmaLine"
+            },
+            {
+              "title": "文字描述转代码",
+              "description": "通过文字描述生成代码",
+              "url": "/prompt-to-code",
+              "icon": "RiMessage2Line"
+            }
+          ]
+        },
+        {
+          "title": "内容",
+          "icon": "FileText",
+          "children": [
+            {
+              "title": "博客",
+              "description": "阅读博客文章",
+              "url": "/blog",
+              "icon": "Newspaper"
+            },
+            {
+              "title": "更新日志",
+              "description": "阅读更新日志",
+              "url": "/updates",
+              "icon": "Clock"
+            },
+            {
+              "title": "文档",
+              "description": "阅读文档",
+              "url": "/docs",
+              "target": "_blank",
+              "icon": "BookOpenText"
+            }
+          ]
+        }
+      ]
+    },
+    "buttons": [],
+    "user_nav": {
+      "show_name": true,
+      "show_credits": true,
+      "show_sign_out": true,
+      "items": [
+        {
+          "title": "账单",
+          "url": "/settings/billing",
+          "icon": "CreditCard"
+        },
+        {
+          "title": "活动",
+          "url": "/activity",
+          "icon": "Activity"
+        }
+      ]
+    },
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true,
+    "topbanner": {
+      "text": "🚀 <strong>CopyWeb</strong> - 终极免费网站代码生成器 <a href='/pricing' class='text-orange-300'>立即免费使用!</a>"
+    }
+  },
+  "footer": {
+    "id": "footer",
+    "brand": {
+      "title": "CopyWeb",
+      "description": "终极免费一站式代码生成器。通过文本提示、截图、Figma 或 URL 复制任何网站设计。一键将创意变为现实。",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "CopyWeb - 网站代码生成器",
+        "width": 1024,
+        "height": 1024
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "关于我们",
+          "children": [
+            {
+              "title": "功能亮点",
+              "url": "/#features",
+              "target": "_self"
+            },
+            {
+              "title": "案例展示",
+              "url": "/showcases",
+              "target": "_self"
+            },
+            {
+              "title": "价格",
+              "url": "/pricing",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "工具",
+          "children": [
+            {
+              "title": "URL 转代码",
+              "url": "/url-to-code",
+              "target": "_self"
+            },
+            {
+              "title": "截图转代码",
+              "url": "/screenshot-to-code",
+              "target": "_self"
+            },
+            {
+              "title": "Figma 转代码",
+              "url": "/figma-to-code",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "资源",
+          "children": [
+            {
+              "title": "文档",
+              "url": "/docs",
+              "target": "_self"
+            },
+            {
+              "title": "博客",
+              "url": "/blog",
+              "target": "_self"
+            },
+            {
+              "title": "支持",
+              "url": "mailto:support@copyweb.net",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": [
+        {
+          "title": "X",
+          "icon": "RiTwitterXFill",
+          "url": "https://x.com/copyweb",
+          "target": "_blank"
+        },
+        {
+          "title": "Github",
+          "icon": "Github",
+          "url": "https://github.com/copyweb",
+          "target": "_blank"
+        },
+        {
+          "title": "Discord",
+          "icon": "RiDiscordFill",
+          "url": "https://discord.gg/copyweb",
+          "target": "_blank"
+        },
+        {
+          "title": "邮箱",
+          "icon": "Mail",
+          "url": "mailto:support@copyweb.net",
+          "target": "_self"
+        }
+      ]
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "隐私政策",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "服务条款",
+          "url": "/terms-of-service"
+        }
+      ]
+    },
+    "show_theme": true,
+    "show_locale": true
+  }
+}

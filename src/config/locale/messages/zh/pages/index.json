@@ -1,0 +1,424 @@
+{
+  "page": {
+    "show_sections": [
+      "hero",
+      "logos",
+      "introduce",
+      "benefits",
+      "usage",
+      "features",
+      "stats",
+      "testimonials",
+      "faq",
+      "cta"
+    ],
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "秒级复制任意网站设计",
+        "highlight_text": "秒级",
+        "description": "CopyWeb 是终极免费一站式代码生成器。<br/>通过文本提示、截图、Figma 或 URL 复制任何网站设计。",
+        "announcement": {
+          "badge": "免费",
+          "title": "🎉 CopyWeb - 100% 永久免费",
+          "url": "/pricing"
+        },
+        "tip": "🎁 无需注册即可无限生成代码",
+        "buttons": [
+          {
+            "title": "开始生成",
+            "icon": "Zap",
+            "url": "/url-to-code",
+            "target": "_self",
+            "variant": "default"
+          },
+          {
+            "title": "查看示例",
+            "icon": "BookOpenText",
+            "url": "/showcases",
+            "target": "_self",
+            "variant": "outline"
+          }
+        ],
+        "show_avatars": true,
+        "avatars_tip": "10,000+ 开发者喜爱 CopyWeb",
+        "show_award": false,
+        "image": {
+          "src": "/imgs/features/admin.png",
+          "alt": "CopyWeb - 网站代码生成器",
+          "width": 1200,
+          "height": 800
+        },
+        "image_invert": {
+          "src": "/imgs/features/admin-dark.png",
+          "alt": "CopyWeb - 网站代码生成器",
+          "width": 1200,
+          "height": 800
+        },
+        "background_image": {
+          "src": "/imgs/bg/tree.jpg",
+          "alt": "hero"
+        }
+      },
+      "logos": {
+        "id": "logos",
+        "title": "CopyWeb 使用现代技术生成代码",
+        "items": [
+          {
+            "title": "React",
+            "image": {
+              "src": "/imgs/logos/react.svg",
+              "alt": "React"
+            }
+          },
+          {
+            "title": "Next.js",
+            "image": {
+              "src": "/imgs/logos/nextjs.svg",
+              "alt": "Next.js"
+            }
+          },
+          {
+            "title": "TailwindCSS",
+            "image": {
+              "src": "/imgs/logos/tailwindcss.svg",
+              "alt": "TailwindCSS"
+            }
+          },
+          {
+            "title": "Vue",
+            "image": {
+              "src": "/imgs/logos/shadcn.svg",
+              "alt": "Vue"
+            }
+          },
+          {
+            "title": "HTML/CSS",
+            "image": {
+              "src": "/imgs/logos/vercel.svg",
+              "alt": "HTML/CSS"
+            }
+          }
+        ]
+      },
+      "introduce": {
+        "block": "features-list",
+        "id": "introduce",
+        "title": "什么是 CopyWeb",
+        "label": "介绍",
+        "description": "CopyWeb 是一个强大的 AI 驱动代码生成器，可将网站设计即时转换为干净、可用于生产的代码。",
+        "image": {
+          "src": "/imgs/features/landing-page.png",
+          "alt": "CopyWeb 介绍"
+        },
+        "items": [
+          {
+            "title": "URL 转代码",
+            "description": "粘贴任意网站 URL，即可获得复制该设计的 HTML、CSS 和 JavaScript 代码。",
+            "icon": "RiLinkM",
+            "image": {
+              "src": "/imgs/features/1.png",
+              "alt": "URL 转代码"
+            }
+          },
+          {
+            "title": "截图转代码",
+            "description": "上传截图或设计稿，CopyWeb 将生成像素级精确的响应式代码。",
+            "icon": "RiImage2Line",
+            "image": {
+              "src": "/imgs/features/2.png",
+              "alt": "截图转代码"
+            }
+          },
+          {
+            "title": "Figma 转代码",
+            "description": "直接导入 Figma 设计，导出可用于生产的 React 或 HTML 组件。",
+            "icon": "RiFigmaLine",
+            "image": {
+              "src": "/imgs/features/3.png",
+              "alt": "Figma 转代码"
+            }
+          },
+          {
+            "title": "文字描述转代码",
+            "description": "用简单的文字描述您想要的网站，让 AI 生成完整的代码结构。",
+            "icon": "RiMessage2Line",
+            "image": {
+              "src": "/imgs/features/4.png",
+              "alt": "文字描述转代码"
+            }
+          }
+        ],
+        "className": "bg-muted"
+      },
+      "benefits": {
+        "block": "features-accordion",
+        "id": "benefits",
+        "title": "为什么选择 CopyWeb",
+        "label": "优势",
+        "description": "将任何网站设计转换为可运行代码的最快方式 - 完全免费。",
+        "items": [
+          {
+            "title": "100% 永久免费",
+            "description": "没有隐藏费用，没有积分系统，无需注册。零成本生成无限代码。",
+            "icon": "RiGiftLine",
+            "image": {
+              "src": "/imgs/features/user-billing.png",
+              "alt": "永久免费"
+            }
+          },
+          {
+            "title": "多种输入方式",
+            "description": "支持 URL、截图、Figma 文件或文字描述 - 选择最适合您的方式。",
+            "icon": "RiClapperboardAiLine",
+            "image": {
+              "src": "/imgs/features/admin-settings.png",
+              "alt": "多种输入"
+            }
+          },
+          {
+            "title": "生产级代码",
+            "description": "获得干净、语义化、响应式的代码，遵循最佳实践，可直接部署。",
+            "icon": "RiCodeFill",
+            "image": {
+              "src": "/imgs/features/landing-page.png",
+              "alt": "生产级代码"
+            }
+          }
+        ]
+      },
+      "usage": {
+        "block": "features-step",
+        "id": "usage",
+        "title": "如何使用 CopyWeb",
+        "description": "三个简单步骤从任何网站设计生成代码：",
+        "image": {
+          "src": "/imgs/features/1.png",
+          "alt": "使用方法"
+        },
+        "image_position": "left",
+        "text_align": "center",
+        "items": [
+          {
+            "title": "选择输入方式",
+            "description": "选择如何提供设计 - 粘贴 URL、上传截图、从 Figma 导入或用文字描述。",
+            "image": {
+              "src": "/imgs/features/5.png",
+              "alt": "步骤 1"
+            }
+          },
+          {
+            "title": "生成代码",
+            "description": "点击生成按钮，让 CopyWeb 的 AI 分析设计并生成干净、优化的代码。",
+            "image": {
+              "src": "/imgs/features/6.png",
+              "alt": "步骤 2"
+            }
+          },
+          {
+            "title": "自定义输出",
+            "description": "选择您偏好的框架（React、Vue、HTML/CSS）并根据需要自定义生成的代码。",
+            "image": {
+              "src": "/imgs/features/7.png",
+              "alt": "步骤 3"
+            }
+          },
+          {
+            "title": "下载并部署",
+            "description": "复制代码或下载为项目文件。您的网站即可部署上线。",
+            "image": {
+              "src": "/imgs/features/8.png",
+              "alt": "步骤 4"
+            }
+          }
+        ],
+        "className": "bg-muted"
+      },
+      "features": {
+        "id": "features",
+        "title": "CopyWeb 核心功能",
+        "description": "将任何网站设计转换为可运行代码所需的一切。",
+        "items": [
+          {
+            "title": "AI 驱动分析",
+            "description": "先进的 AI 能理解布局、颜色、排版和组件。",
+            "icon": "RiRobot2Line"
+          },
+          {
+            "title": "多框架支持",
+            "description": "导出为 React、Vue、Next.js、TailwindCSS 或原生 HTML/CSS。",
+            "icon": "RiNextjsFill"
+          },
+          {
+            "title": "响应式设计",
+            "description": "生成的代码完全响应式，适配所有设备。",
+            "icon": "RiSmartphoneLine"
+          },
+          {
+            "title": "干净代码输出",
+            "description": "语义化 HTML、优化的 CSS 和结构良好的 JavaScript。",
+            "icon": "RiCodeFill"
+          },
+          {
+            "title": "即时预览",
+            "description": "下载前实时预览生成的代码效果。",
+            "icon": "RiEyeLine"
+          },
+          {
+            "title": "无需注册",
+            "description": "无需创建账户即可立即开始生成代码。",
+            "icon": "RiKey2Fill"
+          }
+        ]
+      },
+      "stats": {
+        "id": "stats",
+        "title": "开发者喜爱 CopyWeb",
+        "description": "因为它快速、准确且简单。",
+        "items": [
+          {
+            "title": "10K+",
+            "description": "活跃用户"
+          },
+          {
+            "title": "50K+",
+            "description": "页面生成"
+          },
+          {
+            "title": "4.9/5",
+            "description": "用户评分"
+          }
+        ],
+        "className": "bg-muted"
+      },
+      "testimonials": {
+        "id": "testimonials",
+        "title": "开发者对 CopyWeb 的评价",
+        "description": "听听使用 CopyWeb 加速工作流程的开发者怎么说。",
+        "items": [
+          {
+            "name": "陈明",
+            "role": "前端开发工程师",
+            "quote": "CopyWeb 为我节省了数小时的编码时间。我只需粘贴 URL 就能即时获得干净的 React 代码。简直像魔法！",
+            "image": {
+              "src": "/imgs/avatars/1.png",
+              "alt": "陈明"
+            }
+          },
+          {
+            "name": "李婷",
+            "role": "UI/UX 设计师",
+            "quote": "作为设计师，我现在可以将 Figma 设计稿转换为代码而无需麻烦开发者。游戏规则改变者！",
+            "image": {
+              "src": "/imgs/avatars/2.png",
+              "alt": "李婷"
+            }
+          },
+          {
+            "name": "王强",
+            "role": "自由开发者",
+            "quote": "代码质量令人印象深刻。干净、语义化的 HTML 和组织良好的 CSS。比大多数手写代码还好！",
+            "image": {
+              "src": "/imgs/avatars/3.png",
+              "alt": "王强"
+            }
+          },
+          {
+            "name": "张雪",
+            "role": "创业公司创始人",
+            "quote": "我们用 CopyWeb 30 分钟就搭建了 MVP 落地页。响应式输出完美！",
+            "image": {
+              "src": "/imgs/avatars/4.png",
+              "alt": "张雪"
+            }
+          },
+          {
+            "name": "刘伟",
+            "role": "全栈开发工程师",
+            "quote": "我每天都用 CopyWeb 做原型。Tailwind CSS 输出与我的项目完美集成。",
+            "image": {
+              "src": "/imgs/avatars/5.png",
+              "alt": "刘伟"
+            }
+          },
+          {
+            "name": "赵丽",
+            "role": "设计公司负责人",
+            "quote": "CopyWeb 使我们的生产效率翻倍。现在我们能更快地交付客户项目。",
+            "image": {
+              "src": "/imgs/avatars/6.png",
+              "alt": "赵丽"
+            }
+          }
+        ]
+      },
+      "faq": {
+        "id": "faq",
+        "title": "关于 CopyWeb 的常见问题",
+        "description": "有其他问题？请联系 support@copyweb.net",
+        "items": [
+          {
+            "question": "什么是 CopyWeb，它是如何工作的？",
+            "answer": "CopyWeb 是一个 AI 驱动的代码生成器，可将网站设计转换为干净的、可用于生产的代码。您可以输入 URL、上传截图、从 Figma 导入或用文字描述您的设计，CopyWeb 将立即生成 HTML、CSS 和 JavaScript 代码。"
+          },
+          {
+            "question": "CopyWeb 真的免费吗？",
+            "answer": "是的！CopyWeb 100% 永久免费。没有隐藏费用，没有积分系统，无需注册。您可以零成本生成无限代码。"
+          },
+          {
+            "question": "CopyWeb 支持哪些框架？",
+            "answer": "CopyWeb 支持多种输出格式，包括 React、Vue、Next.js、TailwindCSS 和原生 HTML/CSS。您可以在生成代码前选择您偏好的框架。"
+          },
+          {
+            "question": "生成的代码准确度如何？",
+            "answer": "CopyWeb 使用先进的 AI 分析设计并生成高度准确、像素级精确的代码。输出是响应式的、语义化的，并遵循现代 Web 开发最佳实践。"
+          },
+          {
+            "question": "我可以将生成的代码用于商业用途吗？",
+            "answer": "当然可以！CopyWeb 生成的所有代码都属于您，可以随意使用 - 个人项目、客户工作或商业应用都可以。无需署名。"
+          },
+          {
+            "question": "我需要创建账户吗？",
+            "answer": "基本使用无需注册。您可以立即开始生成代码。创建账户可解锁额外功能，如保存项目和历史记录。"
+          }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "将任何网站设计转换为代码",
+        "description": "秒级生成可用于生产的代码。100% 免费，永久有效。",
+        "buttons": [
+          {
+            "title": "立即开始 - 完全免费",
+            "url": "/url-to-code",
+            "target": "_self",
+            "icon": "Zap"
+          },
+          {
+            "title": "查看示例",
+            "url": "/showcases",
+            "target": "_self",
+            "variant": "outline",
+            "icon": "BookOpenText"
+          }
+        ],
+        "className": "bg-muted"
+      },
+      "subscribe": {
+        "id": "subscribe",
+        "title": "订阅 CopyWeb 更新",
+        "description": "获取最新功能和更新，直接发送到您的邮箱。",
+        "submit": {
+          "input": {
+            "placeholder": "输入您的邮箱"
+          },
+          "button": {
+            "title": "订阅"
+          },
+          "action": "/api/subscribe"
+        },
+        "className": "bg-muted"
+      }
+    }
+  }
+}

@@ -1,0 +1,424 @@
+{
+  "page": {
+    "show_sections": [
+      "hero",
+      "logos",
+      "introduce",
+      "benefits",
+      "usage",
+      "features",
+      "stats",
+      "testimonials",
+      "faq",
+      "cta"
+    ],
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "Copy Any Website Design in Seconds",
+        "highlight_text": "in Seconds",
+        "description": "CopyWeb is the ultimate free all-in-one code generator.<br/>Replicate any website design with text prompts, screenshots, Figma or URL.",
+        "announcement": {
+          "badge": "Free",
+          "title": "🎉 CopyWeb - 100% Free Forever",
+          "url": "/pricing"
+        },
+        "tip": "🎁 Generate unlimited code with no signup required",
+        "buttons": [
+          {
+            "title": "Start Generating",
+            "icon": "Zap",
+            "url": "/url-to-code",
+            "target": "_self",
+            "variant": "default"
+          },
+          {
+            "title": "View Examples",
+            "icon": "BookOpenText",
+            "url": "/showcases",
+            "target": "_self",
+            "variant": "outline"
+          }
+        ],
+        "show_avatars": true,
+        "avatars_tip": "10,000+ developers love CopyWeb",
+        "show_award": false,
+        "image": {
+          "src": "/imgs/features/admin.png",
+          "alt": "CopyWeb - Website Code Generator",
+          "width": 1200,
+          "height": 800
+        },
+        "image_invert": {
+          "src": "/imgs/features/admin-dark.png",
+          "alt": "CopyWeb - Website Code Generator",
+          "width": 1200,
+          "height": 800
+        },
+        "background_image": {
+          "src": "/imgs/bg/tree.jpg",
+          "alt": "hero"
+        }
+      },
+      "logos": {
+        "id": "logos",
+        "title": "CopyWeb generates code using modern technologies",
+        "items": [
+          {
+            "title": "React",
+            "image": {
+              "src": "/imgs/logos/react.svg",
+              "alt": "React"
+            }
+          },
+          {
+            "title": "Next.js",
+            "image": {
+              "src": "/imgs/logos/nextjs.svg",
+              "alt": "Next.js"
+            }
+          },
+          {
+            "title": "TailwindCSS",
+            "image": {
+              "src": "/imgs/logos/tailwindcss.svg",
+              "alt": "TailwindCSS"
+            }
+          },
+          {
+            "title": "Vue",
+            "image": {
+              "src": "/imgs/logos/shadcn.svg",
+              "alt": "Vue"
+            }
+          },
+          {
+            "title": "HTML/CSS",
+            "image": {
+              "src": "/imgs/logos/vercel.svg",
+              "alt": "HTML/CSS"
+            }
+          }
+        ]
+      },
+      "introduce": {
+        "block": "features-list",
+        "id": "introduce",
+        "title": "What is CopyWeb",
+        "label": "Introduce",
+        "description": "CopyWeb is a powerful AI-powered code generator that transforms website designs into clean, production-ready code instantly.",
+        "image": {
+          "src": "/imgs/features/landing-page.png",
+          "alt": "CopyWeb Introduction"
+        },
+        "items": [
+          {
+            "title": "URL to Code",
+            "description": "Paste any website URL and get instant HTML, CSS, and JavaScript code that replicates the design.",
+            "icon": "RiLinkM",
+            "image": {
+              "src": "/imgs/features/1.png",
+              "alt": "URL to Code"
+            }
+          },
+          {
+            "title": "Screenshot to Code",
+            "description": "Upload a screenshot or design mockup and CopyWeb will generate pixel-perfect responsive code.",
+            "icon": "RiImage2Line",
+            "image": {
+              "src": "/imgs/features/2.png",
+              "alt": "Screenshot to Code"
+            }
+          },
+          {
+            "title": "Figma to Code",
+            "description": "Import your Figma designs directly and export production-ready React or HTML components.",
+            "icon": "RiFigmaLine",
+            "image": {
+              "src": "/imgs/features/3.png",
+              "alt": "Figma to Code"
+            }
+          },
+          {
+            "title": "Prompt to Code",
+            "description": "Describe your desired website in plain text and let AI generate the complete code structure.",
+            "icon": "RiMessage2Line",
+            "image": {
+              "src": "/imgs/features/4.png",
+              "alt": "Prompt to Code"
+            }
+          }
+        ],
+        "className": "bg-muted"
+      },
+      "benefits": {
+        "block": "features-accordion",
+        "id": "benefits",
+        "title": "Why Choose CopyWeb",
+        "label": "Benefits",
+        "description": "The fastest way to turn any website design into working code - completely free.",
+        "items": [
+          {
+            "title": "100% Free Forever",
+            "description": "No hidden costs, no credits system, no signup required. Generate unlimited code at zero cost.",
+            "icon": "RiGiftLine",
+            "image": {
+              "src": "/imgs/features/user-billing.png",
+              "alt": "Free Forever"
+            }
+          },
+          {
+            "title": "Multiple Input Methods",
+            "description": "Support URL, screenshot, Figma file, or text prompt - choose the method that works best for you.",
+            "icon": "RiClapperboardAiLine",
+            "image": {
+              "src": "/imgs/features/admin-settings.png",
+              "alt": "Multiple Inputs"
+            }
+          },
+          {
+            "title": "Production-Ready Code",
+            "description": "Get clean, semantic, responsive code that follows best practices and is ready to deploy.",
+            "icon": "RiCodeFill",
+            "image": {
+              "src": "/imgs/features/landing-page.png",
+              "alt": "Production Ready"
+            }
+          }
+        ]
+      },
+      "usage": {
+        "block": "features-step",
+        "id": "usage",
+        "title": "How to Use CopyWeb",
+        "description": "Generate code from any website design in three simple steps:",
+        "image": {
+          "src": "/imgs/features/1.png",
+          "alt": "How to Use"
+        },
+        "image_position": "left",
+        "text_align": "center",
+        "items": [
+          {
+            "title": "Choose Your Input",
+            "description": "Select how you want to provide the design - paste a URL, upload a screenshot, import from Figma, or describe with text.",
+            "image": {
+              "src": "/imgs/features/5.png",
+              "alt": "Step 1"
+            }
+          },
+          {
+            "title": "Generate Code",
+            "description": "Click the generate button and let CopyWeb's AI analyze the design and produce clean, optimized code.",
+            "image": {
+              "src": "/imgs/features/6.png",
+              "alt": "Step 2"
+            }
+          },
+          {
+            "title": "Customize Output",
+            "description": "Choose your preferred framework (React, Vue, HTML/CSS) and customize the generated code as needed.",
+            "image": {
+              "src": "/imgs/features/7.png",
+              "alt": "Step 3"
+            }
+          },
+          {
+            "title": "Download & Deploy",
+            "description": "Copy the code or download as a project file. Your website is ready to deploy instantly.",
+            "image": {
+              "src": "/imgs/features/8.png",
+              "alt": "Step 4"
+            }
+          }
+        ],
+        "className": "bg-muted"
+      },
+      "features": {
+        "id": "features",
+        "title": "Key Features of CopyWeb",
+        "description": "Everything you need to convert any website design into working code.",
+        "items": [
+          {
+            "title": "AI-Powered Analysis",
+            "description": "Advanced AI that understands layouts, colors, typography, and components.",
+            "icon": "RiRobot2Line"
+          },
+          {
+            "title": "Multiple Frameworks",
+            "description": "Export to React, Vue, Next.js, TailwindCSS, or vanilla HTML/CSS.",
+            "icon": "RiNextjsFill"
+          },
+          {
+            "title": "Responsive Design",
+            "description": "Generated code is fully responsive and works on all devices.",
+            "icon": "RiSmartphoneLine"
+          },
+          {
+            "title": "Clean Code Output",
+            "description": "Semantic HTML, optimized CSS, and well-structured JavaScript.",
+            "icon": "RiCodeFill"
+          },
+          {
+            "title": "Instant Preview",
+            "description": "Preview your generated code in real-time before downloading.",
+            "icon": "RiEyeLine"
+          },
+          {
+            "title": "No Signup Required",
+            "description": "Start generating code immediately without creating an account.",
+            "icon": "RiKey2Fill"
+          }
+        ]
+      },
+      "stats": {
+        "id": "stats",
+        "title": "Developers Love CopyWeb",
+        "description": "for its speed, accuracy, and simplicity.",
+        "items": [
+          {
+            "title": "10K+",
+            "description": "Active Users"
+          },
+          {
+            "title": "50K+",
+            "description": "Pages Generated"
+          },
+          {
+            "title": "4.9/5",
+            "description": "User Rating"
+          }
+        ],
+        "className": "bg-muted"
+      },
+      "testimonials": {
+        "id": "testimonials",
+        "title": "What Developers Say About CopyWeb",
+        "description": "Hear from developers who use CopyWeb to speed up their workflow.",
+        "items": [
+          {
+            "name": "Alex Chen",
+            "role": "Frontend Developer",
+            "quote": "CopyWeb saved me hours of coding. I just paste the URL and get clean React code instantly. It's like magic!",
+            "image": {
+              "src": "/imgs/avatars/1.png",
+              "alt": "Alex"
+            }
+          },
+          {
+            "name": "Sarah Miller",
+            "role": "UI/UX Designer",
+            "quote": "As a designer, I can now convert my Figma mockups to code without bothering developers. Game changer!",
+            "image": {
+              "src": "/imgs/avatars/2.png",
+              "alt": "Sarah"
+            }
+          },
+          {
+            "name": "James Wilson",
+            "role": "Freelance Developer",
+            "quote": "The code quality is impressive. Clean, semantic HTML and well-organized CSS. Better than most hand-written code!",
+            "image": {
+              "src": "/imgs/avatars/3.png",
+              "alt": "James"
+            }
+          },
+          {
+            "name": "Emily Zhang",
+            "role": "Startup Founder",
+            "quote": "We built our MVP landing page in 30 minutes using CopyWeb. The responsive output is perfect!",
+            "image": {
+              "src": "/imgs/avatars/4.png",
+              "alt": "Emily"
+            }
+          },
+          {
+            "name": "Michael Brown",
+            "role": "Full Stack Developer",
+            "quote": "I use CopyWeb daily for prototyping. The Tailwind CSS output integrates perfectly with my projects.",
+            "image": {
+              "src": "/imgs/avatars/5.png",
+              "alt": "Michael"
+            }
+          },
+          {
+            "name": "Lisa Park",
+            "role": "Agency Owner",
+            "quote": "CopyWeb has doubled our productivity. We can deliver client projects much faster now.",
+            "image": {
+              "src": "/imgs/avatars/6.png",
+              "alt": "Lisa"
+            }
+          }
+        ]
+      },
+      "faq": {
+        "id": "faq",
+        "title": "Frequently Asked Questions About CopyWeb",
+        "description": "Have another question? Contact us at support@copyweb.net",
+        "items": [
+          {
+            "question": "What is CopyWeb and how does it work?",
+            "answer": "CopyWeb is an AI-powered code generator that converts website designs into clean, production-ready code. You can input a URL, upload a screenshot, import from Figma, or describe your design in text, and CopyWeb will generate HTML, CSS, and JavaScript code instantly."
+          },
+          {
+            "question": "Is CopyWeb really free?",
+            "answer": "Yes! CopyWeb is 100% free forever. There are no hidden costs, no credit system, and no signup required. You can generate unlimited code at zero cost."
+          },
+          {
+            "question": "What frameworks does CopyWeb support?",
+            "answer": "CopyWeb supports multiple output formats including React, Vue, Next.js, TailwindCSS, and vanilla HTML/CSS. You can choose your preferred framework before generating code."
+          },
+          {
+            "question": "How accurate is the generated code?",
+            "answer": "CopyWeb uses advanced AI to analyze designs and generate highly accurate, pixel-perfect code. The output is responsive, semantic, and follows modern web development best practices."
+          },
+          {
+            "question": "Can I use the generated code commercially?",
+            "answer": "Absolutely! All code generated by CopyWeb is yours to use however you like - personal projects, client work, or commercial applications. No attribution required."
+          },
+          {
+            "question": "Do I need to create an account?",
+            "answer": "No signup is required for basic usage. You can start generating code immediately. Creating an account unlocks additional features like saving projects and history."
+          }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "Turn Any Website Design Into Code",
+        "description": "Start generating production-ready code in seconds. 100% free, forever.",
+        "buttons": [
+          {
+            "title": "Start Now - It's Free",
+            "url": "/url-to-code",
+            "target": "_self",
+            "icon": "Zap"
+          },
+          {
+            "title": "View Examples",
+            "url": "/showcases",
+            "target": "_self",
+            "variant": "outline",
+            "icon": "BookOpenText"
+          }
+        ],
+        "className": "bg-muted"
+      },
+      "subscribe": {
+        "id": "subscribe",
+        "title": "Subscribe to CopyWeb Updates",
+        "description": "Get the latest features and updates delivered to your inbox.",
+        "submit": {
+          "input": {
+            "placeholder": "Enter your email"
+          },
+          "button": {
+            "title": "Subscribe"
+          },
+          "action": "/api/subscribe"
+        },
+        "className": "bg-muted"
+      }
+    }
+  }
+}
