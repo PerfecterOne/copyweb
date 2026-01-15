@@ -104,8 +104,8 @@
       ]
     },
     "show_sign": true,
-    "show_theme": true,
-    "show_locale": true,
+    "show_theme": false,
+    "show_locale": false,
     "topbanner": {
       "text": "🚀 <strong>CopyWeb</strong> - The ultimate free website code generator. <a href='/pricing' class='text-orange-300'>Get started for free!</a>"
     }
@@ -227,7 +227,8 @@
         }
       ]
     },
-    "show_theme": true,
-    "show_locale": true
+    "show_theme": false,
+    "show_locale": false,
+    "show_built_with": false
   }
 }
