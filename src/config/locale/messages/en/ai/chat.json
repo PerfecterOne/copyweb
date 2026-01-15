@@ -2,10 +2,10 @@
   "sidebar": {
     "header": {
       "brand": {
-        "title": "ShipAny Chat",
+        "title": "CopyWeb Chat",
         "logo": {
           "src": "/logo.png",
-          "alt": "ShipAny Chat"
+          "alt": "CopyWeb Chat"
         },
         "url": "/chat"
       },
@@ -57,34 +57,10 @@
             "url": "/",
             "icon": "Home",
             "target": "_blank"
-          },
-          {
-            "title": "GitHub",
-            "url": "https://github.com/your-app-name",
-            "icon": "Github",
-            "target": "_blank"
-          },
-          {
-            "title": "Twitter",
-            "url": "https://twitter.com/your-app-name",
-            "icon": "RiTwitterXFill",
-            "target": "_blank"
-          },
-          {
-            "title": "Discord",
-            "url": "https://discord.gg/your-app-name",
-            "icon": "RiDiscordFill",
-            "target": "_blank"
-          },
-          {
-            "title": "Email",
-            "url": "mailto:support@your-domain.com",
-            "icon": "Mail",
-            "target": "_blank"
           }
         ]
       },
-      "show_theme": true,
+      "show_theme": false,
       "show_locale": false
     },
     "variant": "sidebar"
@@ -117,5 +93,17 @@
     "next": "Next",
     "open": "Open chat",
     "untitled": "Untitled conversation"
+  },
+  "resultPanel": {
+    "preview": "Preview",
+    "code": "Code",
+    "emptyPreview": "Generated code will be previewed here",
+    "emptyCode": "No code yet",
+    "copyTooltip": "Copy code",
+    "downloadTooltip": "Download file",
+    "desktopTooltip": "Desktop preview",
+    "mobileTooltip": "Mobile preview",
+    "fullscreenTooltip": "Fullscreen"
   }
 }
+

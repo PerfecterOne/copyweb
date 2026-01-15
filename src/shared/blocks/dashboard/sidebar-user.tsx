@@ -29,6 +29,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/shared/components/ui/sidebar';
+import { cn } from '@/shared/lib/utils';
 import { useAppContext } from '@/shared/contexts/app';
 import { User as UserType } from '@/shared/models/user';
 import { NavItem } from '@/shared/types/blocks/common';
@@ -131,13 +132,16 @@ export function SidebarUser({ user }: { user: SidebarUserType }) {
 
   if (authUser) {
     return (
-      <SidebarMenu className="gap-4 px-3">
+      <SidebarMenu className={cn('gap-4 px-3', !open && 'px-0')}>
         <SidebarMenuItem>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <SidebarMenuButton
                 size="lg"
-                className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                className={cn(
+                  'data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground',
+                  !open && 'justify-center p-0'
+                )}
               >
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage src={authUser.image || ''} alt={authUser.name} />
@@ -145,15 +149,21 @@ export function SidebarUser({ user }: { user: SidebarUserType }) {
                     {authUser.name?.charAt(0)}
                   </AvatarFallback>
                 </Avatar>
-                <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">
-                    {authUser.name}
-                  </span>
-                  {user.show_email && (
-                    <span className="truncate text-xs">{authUser.email}</span>
-                  )}
-                </div>
-                <ChevronsUpDown className="ml-auto size-4" />
+                {open && (
+                  <>
+                    <div className="grid flex-1 text-left text-sm leading-tight">
+                      <span className="truncate font-semibold">
+                        {authUser.name}
+                      </span>
+                      {user.show_email && (
+                        <span className="truncate text-xs">
+                          {authUser.email}
+                        </span>
+                      )}
+                    </div>
+                    <ChevronsUpDown className="ml-auto size-4" />
+                  </>
+                )}
               </SidebarMenuButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent

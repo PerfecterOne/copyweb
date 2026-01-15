@@ -14,10 +14,10 @@
     ],
     "sections": {
       "hero": {
+        "block": "hero-form",
         "id": "hero",
-        "title": "Copy Any Website Design in Seconds",
-        "highlight_text": "in Seconds",
-        "description": "CopyWeb is the ultimate free all-in-one code generator.<br/>Replicate any website design with text prompts, screenshots, Figma or URL.",
+        "title": "Copy Any Web Design to Code",
+        "description": "A one-stop tool to convert screenshots, Figma, or URLs into code",
         "announcement": {
           "badge": "Free",
           "title": "🎉 CopyWeb - 100% Free Forever",

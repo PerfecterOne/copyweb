@@ -57,34 +57,10 @@
             "url": "/",
             "icon": "Home",
             "target": "_blank"
-          },
-          {
-            "title": "GitHub",
-            "url": "https://github.com/your-app-name",
-            "icon": "Github",
-            "target": "_blank"
-          },
-          {
-            "title": "推特",
-            "url": "https://twitter.com/your-app-name",
-            "icon": "RiTwitterXFill",
-            "target": "_blank"
-          },
-          {
-            "title": "Discord",
-            "url": "https://discord.gg/your-app-name",
-            "icon": "RiDiscordFill",
-            "target": "_blank"
-          },
-          {
-            "title": "邮箱",
-            "url": "mailto:support@your-domain.com",
-            "icon": "Mail",
-            "target": "_blank"
           }
         ]
       },
-      "show_theme": true,
+      "show_theme": false,
       "show_locale": false
     },
     "variant": "sidebar"
@@ -117,5 +93,17 @@
     "next": "下一页",
     "open": "进入对话",
     "untitled": "未命名对话"
+  },
+  "resultPanel": {
+    "preview": "预览",
+    "code": "代码",
+    "emptyPreview": "生成的代码将在此处预览",
+    "emptyCode": "暂无代码",
+    "copyTooltip": "复制代码",
+    "downloadTooltip": "下载文件",
+    "desktopTooltip": "桌面端预览",
+    "mobileTooltip": "移动端预览",
+    "fullscreenTooltip": "最大化"
   }
 }
+

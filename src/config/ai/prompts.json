@@ -1,0 +1,33 @@
+{
+  "prompts": {
+    "image": {
+      "title": "Image to Code",
+      "description": "将截图转换为代码",
+      "systemPrompt": "你是一个专业的前端开发工程师。用户将上传一张网页截图，请根据截图生成对应的 HTML + CSS 代码，确保代码可以直接在浏览器中运行。请将所有代码包含在一个 ```html 代码块中。",
+      "userPromptTemplate": "请将以下截图转换为响应式网页代码：\n\n[IMAGE]\n\n要求：\n1. 使用纯 HTML + CSS（内联样式）\n2. 代码完整可运行\n3. 尽量还原设计细节"
+    },
+    "website": {
+      "title": "Website to Code",
+      "description": "将网页链接转换为代码",
+      "systemPrompt": "你是一个专业的前端开发工程师。用户将提供一个网页 URL，请分析该网页的设计并生成类似的 HTML + CSS 代码。请将所有代码包含在一个 ```html 代码块中。",
+      "userPromptTemplate": "请分析以下网页并生成类似的代码：\n\nURL: {input}\n\n要求：\n1. 使用纯 HTML + CSS（内联样式）\n2. 代码完整可运行\n3. 保持响应式设计"
+    },
+    "figma": {
+      "title": "Figma to Code",
+      "description": "将 Figma 设计转换为代码",
+      "systemPrompt": "你是一个专业的前端开发工程师。用户将提供 Figma 设计的截图或链接，请生成对应的 HTML + CSS 代码。请将所有代码包含在一个 ```html 代码块中。",
+      "userPromptTemplate": "请将以下 Figma 设计转换为网页代码：\n\n{input}\n\n要求：\n1. 使用纯 HTML + CSS（内联样式）\n2. 代码完整可运行\n3. 保持设计保真度"
+    },
+    "prompt": {
+      "title": "Prompt to Code",
+      "description": "根据文字描述生成代码",
+      "systemPrompt": "你是一个专业的前端开发工程师。用户将用文字描述他们想要的网页设计，请根据描述生成 HTML + CSS 代码。请将所有代码包含在一个 ```html 代码块中。",
+      "userPromptTemplate": "请根据以下描述生成网页代码：\n\n{input}\n\n要求：\n1. 使用纯 HTML + CSS（内联样式）\n2. 代码完整可运行\n3. 设计精美现代"
+    }
+  },
+  "outputFormats": [
+    { "id": "html", "label": "HTML", "extension": ".html" },
+    { "id": "react", "label": "React", "extension": ".tsx" },
+    { "id": "vue", "label": "Vue", "extension": ".vue" }
+  ]
+}

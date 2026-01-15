@@ -28,6 +28,21 @@ import {
   SourcesTrigger,
 } from '@/shared/components/ai-elements/sources';
 import { cn } from '@/shared/lib/utils';
+import { useChatContext } from '@/shared/contexts/chat';
+
+// Utility to extract code blocks from markdown
+function extractCodeBlock(text: string): { code: string; lang: string; fileName: string } | null {
+  // Match ```lang or ```lang:filename patterns
+  const codeBlockRegex = /```(\w+)?(?::([^\n]+))?\n([\s\S]*?)```/;
+  const match = text.match(codeBlockRegex);
+  if (match) {
+    const lang = match[1] || 'html';
+    const fileName = match[2] || `code.${lang === 'jsx' || lang === 'tsx' ? 'tsx' : lang}`;
+    const code = match[3] || '';
+    return { code: code.trim(), lang, fileName };
+  }
+  return null;
+}
 
 export function ChatMessages({
   chatInstance,
@@ -35,11 +50,29 @@ export function ChatMessages({
   chatInstance: UseChatHelpers<UIMessage>;
 }) {
   const { messages, status, regenerate } = chatInstance;
+  const { setResultCode, setResultFileName } = useChatContext();
   const endOfMessagesRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     endOfMessagesRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, status]);
+
+  // Extract code from the last assistant message
+  useEffect(() => {
+    const lastAssistantMessage = [...messages].reverse().find(
+      (m) => m.role === 'assistant'
+    );
+    if (lastAssistantMessage) {
+      const textPart = lastAssistantMessage.parts.find((p) => p.type === 'text');
+      if (textPart && 'text' in textPart) {
+        const extracted = extractCodeBlock(textPart.text);
+        if (extracted) {
+          setResultCode(extracted.code);
+          setResultFileName(extracted.fileName);
+        }
+      }
+    }
+  }, [messages, setResultCode, setResultFileName]);
 
   return (
     <Conversation className="h-full">

@@ -14,8 +14,8 @@
     "nav": {
       "items": [
         {
-          "title": "Features",
-          "url": "/#features",
+          "title": "AI",
+          "url": "/chat",
           "icon": "Sparkles"
         },
         {
@@ -104,7 +104,7 @@
       ]
     },
     "show_sign": true,
-    "show_theme": false,
+    "show_theme": true,
     "show_locale": false,
     "topbanner": {
       "text": "🚀 <strong>CopyWeb</strong> - The ultimate free website code generator. <a href='/pricing' class='text-orange-300'>Get started for free!</a>"

@@ -18,7 +18,7 @@ export default function ChatLayout({ children }: { children: ReactNode }) {
 
   return (
     <ChatContextProvider>
-      <DashboardLayout sidebar={sidebar}>
+      <DashboardLayout sidebar={sidebar} defaultOpen={false}>
         <LocaleDetector />
         {children}
       </DashboardLayout>

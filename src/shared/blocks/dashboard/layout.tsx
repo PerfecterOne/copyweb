@@ -8,12 +8,15 @@ import { Sidebar } from './sidebar';
 export function DashboardLayout({
   children,
   sidebar,
+  defaultOpen = true,
 }: {
   children: ReactNode;
   sidebar: SidebarType;
+  defaultOpen?: boolean;
 }) {
   return (
     <SidebarProvider
+      defaultOpen={defaultOpen}
       style={
         {
           '--sidebar-width': 'calc(var(--spacing) * 72)',
