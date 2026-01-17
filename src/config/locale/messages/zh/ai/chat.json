@@ -103,7 +103,12 @@
     "downloadTooltip": "下载文件",
     "desktopTooltip": "桌面端预览",
     "mobileTooltip": "移动端预览",
-    "fullscreenTooltip": "最大化"
+    "fullscreenTooltip": "最大化",
+    "loading": "正在启动预览...",
+    "retry": "重试",
+    "fileExplorer": "文件浏览器",
+    "selectFile": "选择文件查看",
+    "files": "个文件"
   }
 }
 

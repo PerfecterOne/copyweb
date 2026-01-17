@@ -42,6 +42,7 @@ const nextConfig = {
           },
         ],
       },
+      // Note: COOP/COEP headers removed - not using WebContainers
     ];
   },
   turbopack: {
@@ -56,6 +57,8 @@ const nextConfig = {
     // Disable mdxRs for Vercel deployment compatibility with fumadocs-mdx
     ...(process.env.VERCEL ? {} : { mdxRs: true }),
   },
+  // Exclude native modules from bundling
+  serverExternalPackages: ['esbuild'],
   reactCompiler: true,
 };
 

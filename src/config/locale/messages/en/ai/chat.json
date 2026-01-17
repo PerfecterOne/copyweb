@@ -103,7 +103,12 @@
     "downloadTooltip": "Download file",
     "desktopTooltip": "Desktop preview",
     "mobileTooltip": "Mobile preview",
-    "fullscreenTooltip": "Fullscreen"
+    "fullscreenTooltip": "Fullscreen",
+    "loading": "Starting preview...",
+    "retry": "Retry",
+    "fileExplorer": "File Explorer",
+    "selectFile": "Select a file to view",
+    "files": "files"
   }
 }
 

@@ -74,5 +74,6 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
+  // Exclude: api, trpc, _next, _vercel, preview, and static files
+  matcher: '/((?!api|trpc|_next|_vercel|preview|.*\\..*).*)',
 };
