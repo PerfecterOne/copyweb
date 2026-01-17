@@ -1,11 +1,15 @@
 "use client"
 
 import type React from "react"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/shared/components/ui/button"
-import { ArrowRight, ImageIcon, Globe, Figma, MessageSquare, Upload, LinkIcon, Code } from "lucide-react"
+import { ArrowRight, ImageIcon, Globe, Figma, MessageSquare, Upload, LinkIcon, Code, Eye, EyeOff } from "lucide-react"
 import { Section } from "@/shared/types/blocks/landing"
 import { cn } from "@/shared/lib/utils"
+import { buildPrompt, type InputType as PromptInputType, type OutputFormat as PromptOutputFormat } from "@/config/ai/prompt-builder"
+import { toast } from "sonner"
+import { useAppContext } from "@/shared/contexts/app"
 
 type InputType = "prompt" | "image" | "website" | "figma"
 type OutputFormat = "html-css" | "react" | "prototype"
@@ -30,12 +34,29 @@ export function HeroForm({
   section: Section;
   className?: string;
 }) {
+  const router = useRouter()
+  const { user, setIsShowSignModal } = useAppContext()
   const [inputType, setInputType] = useState<InputType>("prompt")
   const [outputFormat, setOutputFormat] = useState<OutputFormat>("html-css")
   const [textValue, setTextValue] = useState("")
   const [isDragActive, setIsDragActive] = useState(false)
   const [showOutputDropdown, setShowOutputDropdown] = useState(false)
+  const [showPromptDebug, setShowPromptDebug] = useState(false)
+  const [generatedPrompt, setGeneratedPrompt] = useState("")
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [selectedImageName, setSelectedImageName] = useState<string>("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
+
+  // 实时生成 prompt 用于调试
+  useEffect(() => {
+    const result = buildPrompt({
+      inputType: inputType as PromptInputType,
+      outputFormat: outputFormat as PromptOutputFormat,
+      userContent: textValue || selectedImageName || "[用户输入内容]",
+    })
+    setGeneratedPrompt(result.fullPrompt)
+  }, [inputType, outputFormat, textValue, selectedImageName])
 
   const handleDragEnter = (e: React.DragEvent) => {
     e.preventDefault()
@@ -53,10 +74,147 @@ export function HeroForm({
     e.preventDefault()
     e.stopPropagation()
     setIsDragActive(false)
+    
+    const files = e.dataTransfer.files
+    if (files && files[0]) {
+      handleImageFile(files[0])
+    }
   }
 
   const handleFileInputClick = () => {
     fileInputRef.current?.click()
+  }
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files
+    if (files && files[0]) {
+      handleImageFile(files[0])
+    }
+  }
+
+  const handleImageFile = (file: File) => {
+    if (!file.type.startsWith('image/')) {
+      alert('请选择图片文件')
+      return
+    }
+    if (file.size > 2.5 * 1024 * 1024) {
+      alert('图片大小不能超过 2.5MB')
+      return
+    }
+    
+    setSelectedImageName(file.name)
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      setSelectedImage(e.target?.result as string)
+    }
+    reader.readAsDataURL(file)
+  }
+
+  const handleRemoveImage = () => {
+    setSelectedImage(null)
+    setSelectedImageName("")
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ""
+    }
+  }
+
+  // URL 验证辅助函数
+  const isValidUrl = (str: string): boolean => {
+    try {
+      new URL(str)
+      return true
+    } catch {
+      return false
+    }
+  }
+
+  // 表单提交验证
+  const handleSubmit = () => {
+    // 1. 登录校验
+    if (!user) {
+      setIsShowSignModal(true)
+      toast.info("Please sign in to continue", {
+        description: "Your session has expired or you're not logged in."
+      })
+      return
+    }
+
+    // 2. 根据不同输入类型进行验证
+    switch (inputType) {
+      case "image":
+        if (!selectedImage) {
+          toast.error("Please upload an image first", {
+            description: "Click or drag to upload a screenshot or design image."
+          })
+          return
+        }
+        break
+      
+      case "website":
+        if (!textValue.trim()) {
+          toast.error("Please enter a website URL", {
+            description: "Enter the URL of the website you want to convert."
+          })
+          return
+        }
+        if (!isValidUrl(textValue.trim())) {
+          toast.error("Invalid URL format", {
+            description: "Please enter a valid URL starting with http:// or https://"
+          })
+          return
+        }
+        break
+      
+      case "figma":
+        if (!textValue.trim()) {
+          toast.error("Please enter a Figma URL", {
+            description: "Enter your Figma design file URL."
+          })
+          return
+        }
+        if (!textValue.includes("figma.com")) {
+          toast.error("Invalid Figma URL", {
+            description: "Please enter a valid Figma URL (e.g., figma.com/file/...)"
+          })
+          return
+        }
+        break
+      
+      case "prompt":
+        if (!textValue.trim()) {
+          toast.error("Please describe what you want to create", {
+            description: "Enter a description of the UI you want to generate."
+          })
+          return
+        }
+        if (textValue.trim().length < 10) {
+          toast.error("Description too short", {
+            description: "Please provide more details about your design (at least 10 characters)."
+          })
+          return
+        }
+        break
+    }
+
+    // 验证通过，跳转到 /chat
+    setIsSubmitting(true)
+    
+    // 构建查询参数
+    const params = new URLSearchParams({
+      inputType,
+      outputFormat,
+    })
+    
+    // 根据类型添加内容
+    if (inputType === "image" && selectedImage) {
+      // 图片需要存储到 sessionStorage（URL 参数长度限制）
+      sessionStorage.setItem("copyweb_image", selectedImage)
+      sessionStorage.setItem("copyweb_image_name", selectedImageName)
+    } else {
+      params.set("content", textValue)
+    }
+    
+    router.push(`/chat?${params.toString()}`)
   }
 
   return (
@@ -138,21 +296,50 @@ export function HeroForm({
                 )}
 
                 {inputType === "image" && (
-                  <div
-                    onClick={handleFileInputClick}
-                    className="flex flex-col items-center justify-center min-h-[160px] sm:min-h-[200px] cursor-pointer group"
-                  >
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-muted/80 flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-muted transition-colors">
-                      <Upload className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground" />
-                    </div>
-                    <p className="text-sm sm:text-base text-foreground mb-2 text-center px-4">
-                      <span className="font-medium">drag, paste</span> or{" "}
-                      <span className="text-primary font-medium">click to upload</span>
-                    </p>
-                    <p className="text-xs sm:text-sm text-muted-foreground text-center px-4">
-                      supported: PNG, JPG, JPEG, WEBP, up to 2.5MB
-                    </p>
-                    <input ref={fileInputRef} type="file" accept="image/png,image/jpeg,image/webp" className="hidden" />
+                  <div className="min-h-[160px] sm:min-h-[200px]">
+                    {selectedImage ? (
+                      // 图片预览模式
+                      <div className="flex flex-col items-center">
+                        <div className="relative group">
+                          <img 
+                            src={selectedImage} 
+                            alt="预览" 
+                            className="max-h-[180px] rounded-lg border border-border shadow-sm"
+                          />
+                          <button
+                            onClick={handleRemoveImage}
+                            className="absolute -top-2 -right-2 w-6 h-6 bg-destructive text-destructive-foreground rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-md"
+                          >
+                            ×
+                          </button>
+                        </div>
+                        <p className="mt-3 text-sm text-muted-foreground">{selectedImageName}</p>
+                      </div>
+                    ) : (
+                      // 上传模式
+                      <div
+                        onClick={handleFileInputClick}
+                        className="flex flex-col items-center justify-center min-h-[160px] sm:min-h-[200px] cursor-pointer group"
+                      >
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-muted/80 flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-muted transition-colors">
+                          <Upload className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground" />
+                        </div>
+                        <p className="text-sm sm:text-base text-foreground mb-2 text-center px-4">
+                          <span className="font-medium">drag, paste</span> or{" "}
+                          <span className="text-primary font-medium">click to upload</span>
+                        </p>
+                        <p className="text-xs sm:text-sm text-muted-foreground text-center px-4">
+                          supported: PNG, JPG, JPEG, WEBP, up to 2.5MB
+                        </p>
+                      </div>
+                    )}
+                    <input 
+                      ref={fileInputRef} 
+                      type="file" 
+                      accept="image/png,image/jpeg,image/webp" 
+                      className="hidden" 
+                      onChange={handleFileChange}
+                    />
                   </div>
                 )}
 
@@ -231,13 +418,43 @@ export function HeroForm({
                   <span className="text-sm text-muted-foreground">0 credits left</span>
                   <Button
                     size="icon"
-                    className="rounded-full w-10 h-10 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-200"
+                    onClick={handleSubmit}
+                    disabled={isSubmitting}
+                    className="rounded-full w-10 h-10 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <ArrowRight className="w-5 h-5" />
+                    <ArrowRight className={cn("w-5 h-5", isSubmitting && "animate-pulse")} />
                   </Button>
                 </div>
               </div>
             </div>
+
+            {/* Prompt Debug Toggle */}
+            <div className="flex justify-center">
+              <button
+                onClick={() => setShowPromptDebug(!showPromptDebug)}
+                className="flex items-center gap-2 px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {showPromptDebug ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                {showPromptDebug ? "隐藏 Prompt 调试" : "显示 Prompt 调试"}
+              </button>
+            </div>
+
+            {/* Prompt Debug Display */}
+            {showPromptDebug && (
+              <div className="mt-4 p-4 bg-card/80 border border-border rounded-xl overflow-hidden">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-sm font-medium text-foreground">
+                    🔍 生成的 Prompt 预览
+                  </h3>
+                  <span className="text-xs text-muted-foreground">
+                    {inputType.toUpperCase()} → {outputFormat.toUpperCase()}
+                  </span>
+                </div>
+                <pre className="text-xs text-muted-foreground whitespace-pre-wrap max-h-[400px] overflow-y-auto bg-muted/30 p-4 rounded-lg font-mono">
+                  {generatedPrompt}
+                </pre>
+              </div>
+            )}
           </div>
         </div>
       </div>
