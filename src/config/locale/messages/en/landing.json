@@ -124,23 +124,11 @@
       ]
     },
     "social": {
-      "items": [
-        {
-          "title": "X",
-          "icon": "RiTwitterXFill",
-          "url": "https://x.com/copyweb",
-          "target": "_blank"
-        },
-        {
-          "title": "Github",
-          "icon": "Github",
-          "url": "https://github.com/copyweb",
-          "target": "_blank"
-        },
+      "items": [       
         {
           "title": "Discord",
           "icon": "RiDiscordFill",
-          "url": "https://discord.gg/copyweb",
+          "url": "https://discord.gg/stxmRyeH",
           "target": "_blank"
         },
         {

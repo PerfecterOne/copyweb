@@ -2,6 +2,7 @@
 
 import { LazyImage } from '@/shared/blocks/common';
 import { ScrollAnimation } from '@/shared/components/ui/scroll-animation';
+import { Marquee } from '@/shared/components/ui/marquee';
 import { Section, SectionItem } from '@/shared/types/blocks/landing';
 
 export function Testimonials({
@@ -13,7 +14,7 @@ export function Testimonials({
 }) {
   const TestimonialCard = ({ item }: { item: SectionItem }) => {
     return (
-      <div className="bg-card/25 ring-foreground/[0.07] flex flex-col justify-end gap-6 rounded-(--radius) border border-transparent p-8 ring-1">
+      <div className="bg-card/25 ring-foreground/[0.07] flex flex-col justify-between gap-6 rounded-(--radius) border border-transparent p-8 ring-1 h-full">
         <p className='text-foreground self-end text-balance before:mr-1 before:content-["\201C"] after:ml-1 after:content-["\201D"]'>
           {item.quote || item.description}
         </p>
@@ -57,11 +58,13 @@ export function Testimonials({
         </ScrollAnimation>
         <ScrollAnimation delay={0.2}>
           <div className="border-border/50 relative rounded-(--radius)">
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-px lg:*:nth-1:rounded-t-none lg:*:nth-2:rounded-tl-none lg:*:nth-2:rounded-br-none lg:*:nth-3:rounded-l-none lg:*:nth-4:rounded-r-none lg:*:nth-5:rounded-tl-none lg:*:nth-5:rounded-br-none lg:*:nth-6:rounded-b-none">
+            <Marquee pauseOnHover className="[--duration:40s]">
               {section.items?.map((item, index) => (
-                <TestimonialCard key={index} item={item} />
+                <div key={index} className="w-[350px] flex-shrink-0">
+                  <TestimonialCard item={item} />
+                </div>
               ))}
-            </div>
+            </Marquee>
           </div>
         </ScrollAnimation>
       </div>

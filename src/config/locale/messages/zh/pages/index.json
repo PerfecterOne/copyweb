@@ -301,7 +301,7 @@
             "role": "前端开发工程师",
             "quote": "CopyWeb 为我节省了数小时的编码时间。我只需粘贴 URL 就能即时获得干净的 React 代码。简直像魔法！",
             "image": {
-              "src": "/imgs/avatars/1.png",
+              "src": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&h=200&auto=format&fit=crop",
               "alt": "陈明"
             }
           },
@@ -310,7 +310,7 @@
             "role": "UI/UX 设计师",
             "quote": "作为设计师，我现在可以将 Figma 设计稿转换为代码而无需麻烦开发者。游戏规则改变者！",
             "image": {
-              "src": "/imgs/avatars/2.png",
+              "src": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&h=200&auto=format&fit=crop",
               "alt": "李婷"
             }
           },
@@ -319,7 +319,7 @@
             "role": "自由开发者",
             "quote": "代码质量令人印象深刻。干净、语义化的 HTML 和组织良好的 CSS。比大多数手写代码还好！",
             "image": {
-              "src": "/imgs/avatars/3.png",
+              "src": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&h=200&auto=format&fit=crop",
               "alt": "王强"
             }
           },
@@ -328,7 +328,7 @@
             "role": "创业公司创始人",
             "quote": "我们用 CopyWeb 30 分钟就搭建了 MVP 落地页。响应式输出完美！",
             "image": {
-              "src": "/imgs/avatars/4.png",
+              "src": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=200&h=200&auto=format&fit=crop",
               "alt": "张雪"
             }
           },
@@ -337,7 +337,7 @@
             "role": "全栈开发工程师",
             "quote": "我每天都用 CopyWeb 做原型。Tailwind CSS 输出与我的项目完美集成。",
             "image": {
-              "src": "/imgs/avatars/5.png",
+              "src": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&h=200&auto=format&fit=crop",
               "alt": "刘伟"
             }
           },
@@ -346,7 +346,7 @@
             "role": "设计公司负责人",
             "quote": "CopyWeb 使我们的生产效率翻倍。现在我们能更快地交付客户项目。",
             "image": {
-              "src": "/imgs/avatars/6.png",
+              "src": "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&h=200&auto=format&fit=crop",
               "alt": "赵丽"
             }
           }
@@ -358,28 +358,28 @@
         "description": "有其他问题？请联系 support@copyweb.net",
         "items": [
           {
-            "question": "什么是 CopyWeb，它是如何工作的？",
-            "answer": "CopyWeb 是一个 AI 驱动的代码生成器，可将网站设计转换为干净的、可用于生产的代码。您可以输入 URL、上传截图、从 Figma 导入或用文字描述您的设计，CopyWeb 将立即生成 HTML、CSS 和 JavaScript 代码。"
+            "question": "CopyWeb 支持哪些导入方式？",
+            "answer": "我们支持多种灵活的工作流：您可以直接粘贴网站 URL 进行克隆、上传设计稿截图，或者通过 Figma 插件实现无缝同步。所有的输入都会经过高精度处理以确保视觉还原。"
           },
           {
-            "question": "CopyWeb 真的免费吗？",
-            "answer": "是的！CopyWeb 100% 永久免费。没有隐藏费用，没有积分系统，无需注册。您可以零成本生成无限代码。"
+            "question": "AI 生成代码的核心原理是什么？",
+            "answer": "我们的智能引擎会对输入的视觉内容进行深度解析，自动识别 UI 组件、布局逻辑和样式特征。随后，它会根据您选择的框架，重新构建出模块化且易于维护的代码。"
           },
           {
-            "question": "CopyWeb 支持哪些框架？",
-            "answer": "CopyWeb 支持多种输出格式，包括 React、Vue、Next.js、TailwindCSS 和原生 HTML/CSS。您可以在生成代码前选择您偏好的框架。"
+            "question": "目前支持哪些前端框架？",
+            "answer": "您可以将设计导出为 React、Vue.js 以及标准的 HTML/CSS。对于高级用户，我们还提供了针对 Next.js 和 Nuxt.js 等生成级框架的优化方案。"
           },
           {
-            "question": "生成的代码准确度如何？",
-            "answer": "CopyWeb 使用先进的 AI 分析设计并生成高度准确、像素级精确的代码。输出是响应式的、语义化的，并遵循现代 Web 开发最佳实践。"
+            "question": "我可以在导出代码前进行自定义修改吗？",
+            "answer": "当然可以。CopyWeb 内置了实时在线编辑器，允许您在预览环境下直接调整组件逻辑、微调样式并查看效果，确保导出的每一行代码都符合您的项目需求。"
           },
           {
-            "question": "我可以将生成的代码用于商业用途吗？",
-            "answer": "当然可以！CopyWeb 生成的所有代码都属于您，可以随意使用 - 个人项目、客户工作或商业应用都可以。无需署名。"
+            "question": "生成的代码可以直接用于生产环境吗？",
+            "answer": "是的。我们非常注重代码的质量和性能。生成的代码具有完整的响应式支持、经过优化的静态资源和语义化的 HTML 结构，严格遵循现代 Web 开发的最佳实践方案。"
           },
           {
-            "question": "我需要创建账户吗？",
-            "answer": "基本使用无需注册。您可以立即开始生成代码。创建账户可解锁额外功能，如保存项目和历史记录。"
+            "question": "CopyWeb 是否支持后端逻辑或 API 集成？",
+            "answer": "目前 CopyWeb 专注于高质量的前端界面生成。虽然您可以轻松地在导出的组件中接入自己的后端服务，但我们也正在开发自动化 API 集成功能，敬请期待后续更新。"
           }
         ]
       },

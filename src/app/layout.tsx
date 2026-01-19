@@ -141,10 +141,26 @@ export default async function RootLayout({
         {/* inject affiliate head scripts */}
         {affiliateHeadScripts}
 
-        {/* inject customer service meta tags */}
-        {customerServiceMetaTags}
         {/* inject customer service head scripts */}
         {customerServiceHeadScripts}
+
+        {/* Schema Markup */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "CopyWeb",
+              "url": envConfigs.app_url,
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": `${envConfigs.app_url}/search?q={search_term_string}`,
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
       </head>
       <body suppressHydrationWarning className="overflow-x-hidden">
         <NextTopLoader
