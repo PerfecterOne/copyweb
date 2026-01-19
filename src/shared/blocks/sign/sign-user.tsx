@@ -121,18 +121,24 @@ export function SignUser({
     if (sessionUser || user) return;
 
     didFallbackSyncRef.current = true;
-    void (async () => {
-      try {
-        const res: any = await authClient.getSession();
-        const fresh = extractSessionUser(res?.data ?? res);
-        if (fresh?.id) {
-          setUser(fresh);
-          fetchUserInfo();
+    // Add delay to avoid rate limit collision with useSession's initial request
+    // Wait for client-side throttle interval (2000ms) + buffer
+    const timeoutId = setTimeout(() => {
+      void (async () => {
+        try {
+          const res: any = await authClient.getSession();
+          const fresh = extractSessionUser(res?.data ?? res);
+          if (fresh?.id) {
+            setUser(fresh);
+            fetchUserInfo();
+          }
+        } catch {
+          // ignore
         }
-      } catch {
-        // ignore
-      }
-    })();
+      })();
+    }, 2500); // Wait 2.5 seconds to ensure we're past both client throttle (2000ms) and server limit (800ms)
+
+    return () => clearTimeout(timeoutId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPending, sessionUser, user?.id]);
 

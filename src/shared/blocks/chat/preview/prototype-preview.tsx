@@ -488,6 +488,8 @@ setTimeout(() => {
             "sp-preview-actions": "!hidden",
             "sp-cube-wrapper": "!hidden",  // 隐藏加载图标
             "sp-loading": "!hidden",       // 隐藏加载文字
+            "sp-overlay": "!hidden",       // 隐藏覆盖层
+            "sp-progress-bar": "!hidden",  // 隐藏进度条
           },
         }}
       >

@@ -709,18 +709,43 @@ export default function HeroForm() {
     msg: PromptInputMessage,
     body: Record<string, any>
   ) => {
+    console.log('[fetchNewChat] Starting...', { msg, body });
     setStatus('submitted');
     setError(null);
 
     try {
+      console.log('[fetchNewChat] Sending request to /api/chat/new');
+      
+      // Create abort controller for timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => {
+        console.error('[fetchNewChat] Request timeout after 10 seconds');
+        controller.abort();
+      }, 10000); // 10 second timeout
+      
       const resp: Response = await fetch('/api/chat/new', {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ message: msg, body: body }),
+        signal: controller.signal,
       });
+      
+      clearTimeout(timeoutId);
+      console.log('[fetchNewChat] Response received, status:', resp.status);
+      
       if (!resp.ok) {
-        throw new Error(`request failed with status: ${resp.status}`);
+        const errorText = await resp.text();
+        console.error('[fetchNewChat] Error response:', errorText);
+        throw new Error(`request failed with status: ${resp.status}, body: ${errorText}`);
       }
-      const { code, message, data } = await resp.json();
+      
+      const responseData = await resp.json();
+      console.log('[fetchNewChat] Response data:', responseData);
+      
+      const { code, message, data } = responseData;
+      
       if (code !== 0) {
         throw new Error(message);
       }
@@ -733,14 +758,24 @@ export default function HeroForm() {
       setChats([data, ...chats]);
 
       const path = `/chat/${id}`;
+      console.log('[fetchNewChat] Navigating to:', path);
       router.push(path, {
         locale,
       });
+      console.log('[fetchNewChat] Navigation triggered');
       // setStatus(undefined);
       // setError(null);
     } catch (e: any) {
-      const message =
-        e instanceof Error ? e.message : 'request failed, please try again';
+      let message = 'request failed, please try again';
+      
+      if (e.name === 'AbortError') {
+        message = 'Request timed out. The server is taking too long to respond. Please try again.';
+        console.error('[fetchNewChat] Request aborted due to timeout');
+      } else if (e instanceof Error) {
+        message = e.message;
+      }
+      
+      console.error('[fetchNewChat] Error:', e);
       setStatus('error');
       setError(message);
       toast.error(message);
@@ -774,8 +809,142 @@ export default function HeroForm() {
   };
 
   useEffect(() => {
+    // 只有在没有当前对话时才尝试从参数创建新对话
     setChat(null);
-  }, []);
+
+    const params = new URLSearchParams(window.location.search);
+    const inputType = params.get('inputType') as any;
+    const outputFormat = params.get('outputFormat') as any;
+    const content = params.get('content') || '';
+    const customInstructions = params.get('customInstructions') || '';
+
+    console.log('[Generator] URL params:', { inputType, outputFormat, content, user: !!user });
+
+    if (inputType && outputFormat) {
+      if (!user) {
+        console.log('[Generator] User not logged in, showing sign-in modal');
+        toast.error('Please sign in to continue');
+        setIsShowSignModal(true);
+        return;
+      }
+      
+      console.log('[Generator] Starting auto-start flow...');
+      
+      // 捕获到自动化创建参数
+      const runAutoStart = async () => {
+        let finalContent = content;
+        let files: any[] = [];
+
+        // 如果是图片，从 sessionStorage 复原并上传到 R2
+        if (inputType === 'image') {
+          const storedImage = sessionStorage.getItem('copyweb_image');
+          const storedName = sessionStorage.getItem('copyweb_image_name') || 'upload.png';
+          
+          if (!storedImage) {
+            toast.error('No image found. Please upload an image first.');
+            return;
+          }
+          
+          try {
+            console.log('[Auto-start] Processing image upload...');
+            
+            // 1. 将 base64 转换为 Blob
+            const response = await fetch(storedImage);
+            const blob = await response.blob();
+            
+            console.log('[Auto-start] Image blob created:', blob.type, blob.size);
+            
+            // 2. 创建 File 对象
+            const file = new File([blob], storedName, { type: blob.type || 'image/png' });
+            
+            // 3. 上传到 R2
+            const formData = new FormData();
+            formData.append('files', file);
+            
+            console.log('[Auto-start] Uploading to R2...');
+            
+            const uploadResponse = await fetch('/api/storage/upload-image', {
+              method: 'POST',
+              body: formData,
+            });
+            
+            const uploadResult = await uploadResponse.json();
+            
+            console.log('[Auto-start] Upload result:', uploadResult);
+            
+            if (uploadResult.code === 0 && uploadResult.data?.urls?.length > 0) {
+              // 4. 获取 R2 URL 并传给 AI
+              const imageUrl = uploadResult.data.urls[0];
+              
+              console.log('[Auto-start] Image uploaded successfully:', imageUrl);
+              
+              files = [{
+                type: 'file',
+                url: imageUrl,  // 使用 R2 URL
+                mediaType: blob.type || 'image/png',
+                filename: storedName
+              }];
+              
+              finalContent = content || 'Analyze this image and convert it to code';
+              
+              // 清理 sessionStorage
+              sessionStorage.removeItem('copyweb_image');
+              sessionStorage.removeItem('copyweb_image_name');
+            } else {
+              console.error('[Auto-start] Upload failed:', uploadResult);
+              toast.error('Failed to upload image to storage: ' + (uploadResult.message || 'Unknown error'));
+              return;
+            }
+          } catch (error) {
+            console.error('[Auto-start] Image upload error:', error);
+            toast.error('Failed to process image: ' + (error instanceof Error ? error.message : 'Unknown error'));
+            return;
+          }
+        }
+
+        // 构建全量 Prompt
+        console.log('[Auto-start] Building prompt...');
+        const { buildPrompt } = await import('@/config/ai/prompt-builder');
+        const promptResult = buildPrompt({
+          inputType,
+          outputFormat,
+          userContent: finalContent,
+          customInstructions
+        });
+
+        console.log('[Auto-start] Prompt built, creating chat...');
+        console.log('[Auto-start] User prompt length:', promptResult.userPrompt.length);
+        console.log('[Auto-start] System prompt length:', promptResult.systemPrompt.length);
+        console.log('[Auto-start] Files:', files);
+
+        // 触发自动化创建
+        await fetchNewChat(
+          { 
+            text: promptResult.userPrompt, 
+            files 
+          }, 
+          { 
+            model: 'anthropic/claude-3.5-sonnet', // 使用 Claude 3.5 Sonnet（更广泛可用）
+            systemPrompt: promptResult.systemPrompt,
+            isHeroInit: true // 标记为首页初始化，用于 UI 隐藏
+          }
+        );
+        
+        console.log('[Auto-start] Chat created successfully');
+      };
+
+      runAutoStart().catch(error => {
+        console.error('[Auto-start] Error:', error);
+        toast.error('Failed to start chat: ' + (error instanceof Error ? error.message : 'Unknown error'));
+      });
+    } else {
+      console.log('[Generator] Auto-start conditions not met:', { 
+        hasInputType: !!inputType, 
+        hasOutputFormat: !!outputFormat, 
+        hasUser: !!user 
+      });
+    }
+  }, [user]); // 依赖 user 确保创建时已登录
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -789,15 +958,7 @@ export default function HeroForm() {
         <header className="bg-background sticky top-0 z-10 flex w-full items-center gap-2 px-4 py-3">
           <SidebarTrigger className="size-7" />
           <div className="flex-1"></div>
-          {!showPanel && (
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setShowPanel(true)}
-            >
-              <PanelRight className="h-4 w-4" />
-            </Button>
-          )}
+          {/* Panel always visible in chat pages - no toggle button */}
         </header>
         <div className="mx-auto -mt-16 flex h-screen w-full flex-1 flex-col items-center justify-center px-4 pb-6 md:max-w-2xl">
           <h2 className="mb-4 text-center text-3xl font-bold">{t('title')}</h2>
@@ -842,13 +1003,11 @@ export default function HeroForm() {
         </div>
       </div>
 
-      {/* Result Panel */}
-      {showPanel && (
-        <ResultPanel
-          className="hidden w-[70%] lg:flex"
-          onClose={() => setShowPanel(false)}
-        />
-      )}
+      {/* Result Panel - Always visible in chat pages */}
+      <ResultPanel
+        className="flex w-[70%]" // 移除 hidden 和 lg: 前缀，始终显示
+        onClose={() => {}} // No-op: panel cannot be closed in chat pages
+      />
     </div>
   );
 }

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R2 Storage Test</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    .test-area {
+      border: 2px dashed #ccc;
+      padding: 30px;
+      text-align: center;
+      margin: 20px 0;
+    }
+    button {
+      background: #0070f3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #0051cc;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f5f5f5;
+      border-radius: 5px;
+      word-break: break-all;
+    }
+    .success {
+      background: #d4edda;
+      color: #155724;
+    }
+    .error {
+      background: #f8d7da;
+      color: #721c24;
+    }
+    img {
+      max-width: 100%;
+      margin-top: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧪 R2 Storage Upload Test</h1>
+  <p>This page tests if R2 storage is configured correctly.</p>
+
+  <div class="test-area">
+    <input type="file" id="fileInput" accept="image/*" />
+    <br><br>
+    <button onclick="testUpload()">Upload to R2</button>
+  </div>
+
+  <div id="result"></div>
+
+  <script>
+    async function testUpload() {
+      const fileInput = document.getElementById('fileInput');
+      const resultDiv = document.getElementById('result');
+      
+      if (!fileInput.files || fileInput.files.length === 0) {
+        resultDiv.innerHTML = '<div class="result error">❌ Please select an image first</div>';
+        return;
+      }
+
+      const file = fileInput.files[0];
+      
+      resultDiv.innerHTML = '<div class="result">⏳ Uploading to R2...</div>';
+
+      try {
+        const formData = new FormData();
+        formData.append('files', file);
+
+        const response = await fetch('/api/storage/upload-image', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const result = await response.json();
+
+        if (result.code === 0 && result.data?.urls?.length > 0) {
+          const imageUrl = result.data.urls[0];
+          resultDiv.innerHTML = `
+            <div class="result success">
+              <strong>✅ Upload Successful!</strong><br><br>
+              <strong>Image URL:</strong><br>
+              <a href="${imageUrl}" target="_blank">${imageUrl}</a><br><br>
+              <strong>Preview:</strong><br>
+              <img src="${imageUrl}" alt="Uploaded image" />
+            </div>
+          `;
+        } else {
+          resultDiv.innerHTML = `
+            <div class="result error">
+              <strong>❌ Upload Failed</strong><br><br>
+              ${result.message || 'Unknown error'}
+            </div>
+          `;
+        }
+      } catch (error) {
+        resultDiv.innerHTML = `
+          <div class="result error">
+            <strong>❌ Upload Error</strong><br><br>
+            ${error.message}
+          </div>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>

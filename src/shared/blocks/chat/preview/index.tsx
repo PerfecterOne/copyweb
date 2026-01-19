@@ -24,7 +24,7 @@ interface PreviewPanelProps {
 export function PreviewPanel({ outputMode, code, files, className }: PreviewPanelProps) {
   switch (outputMode) {
     case 'html-css':
-      return <HtmlPreview code={code || ''} className={className} />;
+      return <HtmlPreview code={code} files={files} className={className} />;
     case 'react':
       return <ReactPreview files={files || {}} className={className} />;
     case 'prototype':

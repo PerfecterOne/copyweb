@@ -4,7 +4,8 @@ import { useMemo } from 'react';
 import { cn } from '@/shared/lib/utils';
 
 interface HtmlPreviewProps {
-  code: string;
+  code?: string;
+  files?: Record<string, string>;
   className?: string;
 }
 
@@ -13,14 +14,29 @@ interface HtmlPreviewProps {
  * 使用 iframe + srcDoc 实现完全隔离的预览
  * 自动注入 Tailwind CDN 支持
  */
-export function HtmlPreview({ code, className }: HtmlPreviewProps) {
+export function HtmlPreview({ code, files, className }: HtmlPreviewProps) {
   const html = useMemo(() => {
-    if (!code) return '';
+    // 优先使用 code 参数
+    let htmlContent = code || '';
+    
+    // 如果 code 为空，尝试从 files 中查找 HTML 文件
+    if (!htmlContent && files) {
+      // 查找 index.html 或任何 .html 文件
+      const htmlFile = files['/index.html'] || 
+                       files['index.html'] || 
+                       Object.entries(files).find(([path]) => path.endsWith('.html'))?.[1];
+      
+      if (htmlFile) {
+        htmlContent = htmlFile;
+      }
+    }
+    
+    if (!htmlContent) return '';
     
     // 如果代码已经包含完整的 HTML 结构
-    if (code.includes('<head>')) {
+    if (htmlContent.includes('<head>')) {
       // 注入 Tailwind CDN 到 head 中
-      return code.replace(
+      return htmlContent.replace(
         '</head>',
         '<script src="https://cdn.tailwindcss.com"></script></head>'
       );
@@ -39,12 +55,12 @@ export function HtmlPreview({ code, className }: HtmlPreviewProps) {
   </style>
 </head>
 <body>
-${code}
+${htmlContent}
 </body>
 </html>`;
-  }, [code]);
+  }, [code, files]);
 
-  if (!code) {
+  if (!html) {
     return (
       <div className={cn("flex items-center justify-center h-full bg-muted/20", className)}>
         <p className="text-muted-foreground text-sm">No HTML content to preview</p>

@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useRef, useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter } from "@/core/i18n/navigation"
 import { Button } from "@/shared/components/ui/button"
 import { ArrowRight, ImageIcon, Globe, Figma, MessageSquare, Upload, LinkIcon, Code, Eye, EyeOff } from "lucide-react"
 import { Section } from "@/shared/types/blocks/landing"
@@ -46,6 +46,7 @@ export function HeroForm({
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [selectedImageName, setSelectedImageName] = useState<string>("")
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [userCredits, setUserCredits] = useState<number>(0)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   // 实时生成 prompt 用于调试
@@ -57,6 +58,31 @@ export function HeroForm({
     })
     setGeneratedPrompt(result.fullPrompt)
   }, [inputType, outputFormat, textValue, selectedImageName])
+
+  // 获取用户积分
+  useEffect(() => {
+    const fetchUserCredits = async () => {
+      if (!user) {
+        setUserCredits(0)
+        return
+      }
+      
+      try {
+        const response = await fetch('/api/user/get-user-credits', {
+          method: 'POST',
+        })
+        const data = await response.json()
+        if (data.code === 0 && data.data) {
+          setUserCredits(data.data.remainingCredits || 0)
+        }
+      } catch (error) {
+        console.error('Failed to fetch user credits:', error)
+        setUserCredits(0)
+      }
+    }
+
+    fetchUserCredits()
+  }, [user])
 
   const handleDragEnter = (e: React.DragEvent) => {
     e.preventDefault()
@@ -139,7 +165,20 @@ export function HeroForm({
       return
     }
 
-    // 2. 根据不同输入类型进行验证
+    // 2. 积分校验
+    if (userCredits < 1) {
+      toast.error("Insufficient credits", {
+        description: "You need at least 1 credit to generate code. Please purchase credits to continue."
+      })
+      // 滚动到 pricing 模块
+      const pricingSection = document.getElementById('pricing')
+      if (pricingSection) {
+        pricingSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+      return
+    }
+
+    // 3. 根据不同输入类型进行验证
     switch (inputType) {
       case "image":
         if (!selectedImage) {
@@ -214,7 +253,7 @@ export function HeroForm({
       params.set("content", textValue)
     }
     
-    router.push(`/chat?${params.toString()}`)
+    router.push(`/chat/new?${params.toString()}`)
   }
 
   return (
@@ -231,7 +270,7 @@ export function HeroForm({
 
       <div className="relative">
         {/* Hero Section */}
-        <div className="max-w-6xl mx-auto px-6 pt-20 pb-12">
+        <div className="max-w-6xl mx-auto px-6 pt-28 pb-12 md:pt-32">
           {/* Title Area */}
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-balance mb-4">
@@ -415,7 +454,7 @@ export function HeroForm({
 
                 {/* Credits & Submit */}
                 <div className="flex items-center justify-between sm:justify-end gap-4">
-                  <span className="text-sm text-muted-foreground">0 credits left</span>
+                  <span className="text-sm text-muted-foreground">{userCredits} credits left</span>
                   <Button
                     size="icon"
                     onClick={handleSubmit}
@@ -428,8 +467,8 @@ export function HeroForm({
               </div>
             </div>
 
-            {/* Prompt Debug Toggle */}
-            <div className="flex justify-center">
+            {/* Prompt Debug Toggle - Temporarily Hidden */}
+            {/* <div className="flex justify-center">
               <button
                 onClick={() => setShowPromptDebug(!showPromptDebug)}
                 className="flex items-center gap-2 px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -437,7 +476,7 @@ export function HeroForm({
                 {showPromptDebug ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 {showPromptDebug ? "隐藏 Prompt 调试" : "显示 Prompt 调试"}
               </button>
-            </div>
+            </div> */}
 
             {/* Prompt Debug Display */}
             {showPromptDebug && (

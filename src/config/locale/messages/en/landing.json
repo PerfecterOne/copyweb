@@ -12,12 +12,7 @@
       "url": "/"
     },
     "nav": {
-      "items": [
-        {
-          "title": "AI",
-          "url": "/chat",
-          "icon": "Sparkles"
-        },
+      "items": [      
         {
           "title": "Showcases",
           "url": "/showcases",
@@ -27,61 +22,12 @@
           "title": "Pricing",
           "url": "/pricing",
           "icon": "DollarSign"
-        },
+        },   
         {
-          "title": "Tools",
-          "icon": "RiRobot2Line",
-          "children": [
-            {
-              "title": "URL to Code",
-              "description": "Generate code from any website URL",
-              "url": "/url-to-code",
-              "icon": "RiLinkM"
-            },
-            {
-              "title": "Screenshot to Code",
-              "description": "Convert screenshots to HTML/CSS code",
-              "url": "/screenshot-to-code",
-              "icon": "RiImage2Line"
-            },
-            {
-              "title": "Figma to Code",
-              "description": "Transform Figma designs to code",
-              "url": "/figma-to-code",
-              "icon": "RiFigmaLine"
-            },
-            {
-              "title": "Prompt to Code",
-              "description": "Generate code from text descriptions",
-              "url": "/prompt-to-code",
-              "icon": "RiMessage2Line"
-            }
-          ]
-        },
-        {
-          "title": "Content",
-          "icon": "FileText",
-          "children": [
-            {
-              "title": "Blog",
-              "description": "Read Blog Posts",
-              "url": "/blog",
-              "icon": "Newspaper"
-            },
-            {
-              "title": "Updates",
-              "description": "Read Update Logs",
-              "url": "/updates",
-              "icon": "Clock"
-            },
-            {
-              "title": "Docs",
-              "description": "Read Documentation",
-              "url": "/docs",
-              "target": "_blank",
-              "icon": "BookOpenText"
-            }
-          ]
+          "title": "Blog",
+          "icon": "Newspaper",
+           "description": "Read Blog Posts",
+          "url": "/blog"         
         }
       ]
     },
@@ -149,30 +95,20 @@
           "title": "Tools",
           "children": [
             {
-              "title": "URL to Code",
-              "url": "/url-to-code",
-              "target": "_self"
+              "title": "AI Image Generator",
+              "url": "http://aiimagetoimage.net",
+              "target": "_blank"
             },
             {
-              "title": "Screenshot to Code",
-              "url": "/screenshot-to-code",
-              "target": "_self"
-            },
-            {
-              "title": "Figma to Code",
-              "url": "/figma-to-code",
-              "target": "_self"
-            }
+              "title": "Video Blur",
+              "url": "http://blurany.org",
+              "target": "_blank"
+            }           
           ]
         },
         {
           "title": "Resources",
-          "children": [
-            {
-              "title": "Documents",
-              "url": "/docs",
-              "target": "_self"
-            },
+          "children": [           
             {
               "title": "Blog",
               "url": "/blog",

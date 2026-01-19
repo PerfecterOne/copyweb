@@ -1,68 +1,28 @@
 {
   "page": {
     "show_sections": [
-      "hero",
-      "logos",
+      "hero",    
       "introduce",
-      "benefits",
+      "showcase",
+      "logos",     
       "usage",
-      "features",
-      "stats",
+      "features",       
       "testimonials",
-      "faq",
+      "pricing",
+      "faq",   
       "cta"
     ],
     "sections": {
       "hero": {
         "block": "hero-form",
         "id": "hero",
-        "title": "Copy Any Web Design to Code",
-        "description": "A one-stop tool to convert screenshots, Figma, or URLs into code",
-        "announcement": {
-          "badge": "Free",
-          "title": "🎉 CopyWeb - 100% Free Forever",
-          "url": "/pricing"
-        },
-        "tip": "🎁 Generate unlimited code with no signup required",
-        "buttons": [
-          {
-            "title": "Start Generating",
-            "icon": "Zap",
-            "url": "/url-to-code",
-            "target": "_self",
-            "variant": "default"
-          },
-          {
-            "title": "View Examples",
-            "icon": "BookOpenText",
-            "url": "/showcases",
-            "target": "_self",
-            "variant": "outline"
-          }
-        ],
-        "show_avatars": true,
-        "avatars_tip": "10,000+ developers love CopyWeb",
-        "show_award": false,
-        "image": {
-          "src": "/imgs/features/admin.png",
-          "alt": "CopyWeb - Website Code Generator",
-          "width": 1200,
-          "height": 800
-        },
-        "image_invert": {
-          "src": "/imgs/features/admin-dark.png",
-          "alt": "CopyWeb - Website Code Generator",
-          "width": 1200,
-          "height": 800
-        },
-        "background_image": {
-          "src": "/imgs/bg/tree.jpg",
-          "alt": "hero"
-        }
+        "title": "Copy Any Website Design into Code",
+        "description": "A one-stop tool to convert screenshots, Figma, or URLs into code"     
       },
       "logos": {
         "id": "logos",
-        "title": "CopyWeb generates code using modern technologies",
+        "title": "Turn Designs into Code with Popular Frameworks",
+        "description": "From design files or screenshots to usable frontend code—no manual rewriting needed.",
         "items": [
           {
             "title": "React",
@@ -107,6 +67,11 @@
         "title": "What is CopyWeb",
         "label": "Introduce",
         "description": "CopyWeb is a powerful AI-powered code generator that transforms website designs into clean, production-ready code instantly.",
+        "className": "-mt-18 md:-mt-26",
+        "video": {
+          "src": "https://file.raoedits.org/copyweb/copyweb.mp4",
+          "poster": "https://file.raoedits.org/copyweb/copyweb-cover.png"
+        },
         "image": {
           "src": "/imgs/features/landing-page.png",
           "alt": "CopyWeb Introduction"
@@ -148,92 +113,77 @@
               "alt": "Prompt to Code"
             }
           }
-        ],
-        "className": "bg-muted"
-      },
-      "benefits": {
-        "block": "features-accordion",
-        "id": "benefits",
-        "title": "Why Choose CopyWeb",
-        "label": "Benefits",
-        "description": "The fastest way to turn any website design into working code - completely free.",
-        "items": [
-          {
-            "title": "100% Free Forever",
-            "description": "No hidden costs, no credits system, no signup required. Generate unlimited code at zero cost.",
-            "icon": "RiGiftLine",
-            "image": {
-              "src": "/imgs/features/user-billing.png",
-              "alt": "Free Forever"
-            }
-          },
-          {
-            "title": "Multiple Input Methods",
-            "description": "Support URL, screenshot, Figma file, or text prompt - choose the method that works best for you.",
-            "icon": "RiClapperboardAiLine",
-            "image": {
-              "src": "/imgs/features/admin-settings.png",
-              "alt": "Multiple Inputs"
-            }
-          },
-          {
-            "title": "Production-Ready Code",
-            "description": "Get clean, semantic, responsive code that follows best practices and is ready to deploy.",
-            "icon": "RiCodeFill",
-            "image": {
-              "src": "/imgs/features/landing-page.png",
-              "alt": "Production Ready"
-            }
-          }
         ]
       },
-      "usage": {
-        "block": "features-step",
-        "id": "usage",
-        "title": "How to Use CopyWeb",
-        "description": "Generate code from any website design in three simple steps:",
-        "image": {
-          "src": "/imgs/features/1.png",
-          "alt": "How to Use"
-        },
-        "image_position": "left",
-        "text_align": "center",
+      "showcase": {
+        "block": "showcase",
+        "id": "showcase",
+        "title": "Design to Code, in Action",
+        "description": "Examples of real designs transformed into usable frontend code.",
         "items": [
           {
-            "title": "Choose Your Input",
-            "description": "Select how you want to provide the design - paste a URL, upload a screenshot, import from Figma, or describe with text.",
+            "id": 1,
+            "title": "AI Image Generator",
+            "description": "Transform text prompts into stunning visuals with advanced AI models",
+            "gradient": "from-primary/20 to-secondary/30",
             "image": {
-              "src": "/imgs/features/5.png",
-              "alt": "Step 1"
+              "src": "https://file.raoedits.org/copyweb/copyweb-ai-image-creator.png",
+              "alt": "copy any ui into code "
             }
           },
           {
-            "title": "Generate Code",
-            "description": "Click the generate button and let CopyWeb's AI analyze the design and produce clean, optimized code.",
+            "id": 2,
+            "title": "AI Video Blur",
+            "description": "Automatically generate responsive layouts from your designs",
+            "gradient": "from-secondary/30 to-accent/20",
             "image": {
-              "src": "/imgs/features/6.png",
-              "alt": "Step 2"
+              "src": "https://file.nuwa.run/copyweb/copyweb-example-blurany.png",
+              "alt": "copy any ui as markdown"
             }
           },
           {
-            "title": "Customize Output",
-            "description": "Choose your preferred framework (React, Vue, HTML/CSS) and customize the generated code as needed.",
+            "id": 3,
+            "title": "AI Image To Image",
+            "description": "Create harmonious color palettes that match your brand",
+            "gradient": "from-accent/20 to-primary/20",
             "image": {
-              "src": "/imgs/features/7.png",
-              "alt": "Step 3"
+              "src": "https://file.raoedits.org/copyweb/copyweb-landingpage-creator.png",
+              "alt": "copy website online "
             }
           },
           {
-            "title": "Download & Deploy",
-            "description": "Copy the code or download as a project file. Your website is ready to deploy instantly.",
+            "id": 4,
+            "title": "AI Image To Image",
+            "description": "Export production-ready code in React, Vue, or HTML",
+            "gradient": "from-primary/30 to-secondary/20",
             "image": {
-              "src": "/imgs/features/8.png",
-              "alt": "Step 4"
+              "src": "https://file.raoedits.org/copyweb/copyweb-aiimagegenerator.png",
+              "alt": "copywriting website"
+            }
+          },
+          {
+            "id": 5,
+            "title": "Volley Style",
+            "description": "Instantly adapt designs to any screen size or format",
+            "gradient": "from-secondary/20 to-accent/30",
+            "image": {
+              "src": "https://file.nuwa.run/copyweb/copyweb-socialweb.png",
+              "alt": "copy web page into code"
+            }
+          },
+          {
+            "id": 6,
+            "title": "CopyWeb",
+            "description": "Turn Any Website Design into Code Instantly",
+            "gradient": "from-accent/30 to-primary/20",
+            "image": {
+              "src": "https://file.raoedits.org/copyweb/copyweb-hero.png",
+              "alt": "convert web to ceode instant preview"
             }
           }
         ],
         "className": "bg-muted"
-      },
+      },     
       "features": {
         "id": "features",
         "title": "Key Features of CopyWeb",
@@ -265,32 +215,21 @@
             "icon": "RiEyeLine"
           },
           {
-            "title": "No Signup Required",
-            "description": "Start generating code immediately without creating an account.",
+            "title": "Free Account Required",
+            "description": "Sign up for a free account to start generating code instantly.",
             "icon": "RiKey2Fill"
           }
         ]
       },
-      "stats": {
-        "id": "stats",
-        "title": "Developers Love CopyWeb",
-        "description": "for its speed, accuracy, and simplicity.",
-        "items": [
-          {
-            "title": "10K+",
-            "description": "Active Users"
-          },
-          {
-            "title": "50K+",
-            "description": "Pages Generated"
-          },
-          {
-            "title": "4.9/5",
-            "description": "User Rating"
-          }
-        ],
-        "className": "bg-muted"
+      "pricing": {
+        "block": "pricing",
+        "id": "pricing",
+        "title": "Simple, Transparent Pricing",
+        "description": "Choose the perfect plan for your needs",
+        "source": "pricing",
+         "className": "bg-muted"
       },
+ 
       "testimonials": {
         "id": "testimonials",
         "title": "What Developers Say About CopyWeb",
@@ -393,14 +332,7 @@
             "url": "/url-to-code",
             "target": "_self",
             "icon": "Zap"
-          },
-          {
-            "title": "View Examples",
-            "url": "/showcases",
-            "target": "_self",
-            "variant": "outline",
-            "icon": "BookOpenText"
-          }
+          }         
         ],
         "className": "bg-muted"
       },

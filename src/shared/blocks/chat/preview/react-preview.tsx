@@ -57,6 +57,11 @@ export function ReactPreview({ files, className }: ReactPreviewProps) {
             "sp-stack": "!h-full",
             "sp-preview": "!h-full",
             "sp-preview-container": "!h-full",
+            "sp-preview-actions": "!hidden",
+            "sp-cube-wrapper": "!hidden",
+            "sp-loading": "!hidden",
+            "sp-overlay": "!hidden",
+            "sp-progress-bar": "!hidden",
           }
         }}
       >

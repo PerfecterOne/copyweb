@@ -1,43 +1,43 @@
 {
   "metadata": {
-    "title": "Showcases",
-    "description": "Awesome projects built with ShipAny"
+    "title": "Showcases - Real Designs Converted to Code | CopyWeb",
+    "description": "See real examples of websites and designs converted to production-ready code with CopyWeb"
   },
   "page": {
     "title": "Showcases",
     "sections": {
       "showcases": {
         "id": "showcases",
-        "title": "AI SaaS Startups built with ShipAny",
-        "description": "Easy to use and fast to ship.",
+        "title": "Real Designs Converted to Code",
+        "description": "Examples of websites and UI designs transformed into clean, production-ready code using CopyWeb.",
         "groups": [
           {
             "name": "all",
             "title": "All"
           },
           {
-            "name": "ai-chatbot",
-            "title": "AI Chatbot"
+            "name": "landing-page",
+            "title": "Landing Pages"
           },
           {
-            "name": "ai-image",
-            "title": "AI Image"
+            "name": "dashboard",
+            "title": "Dashboards"
           },
           {
-            "name": "ai-video",
-            "title": "AI Video"
+            "name": "e-commerce",
+            "title": "E-commerce"
           },
           {
-            "name": "ai-audio",
-            "title": "AI Audio"
+            "name": "portfolio",
+            "title": "Portfolios"
           },
           {
-            "name": "ai-music",
-            "title": "AI Music"
+            "name": "saas",
+            "title": "SaaS Apps"
           },
           {
-            "name": "ai-coding",
-            "title": "AI Coding"
+            "name": "blog",
+            "title": "Blogs"
           },
           {
             "name": "other",
@@ -46,103 +46,70 @@
         ],
         "items": [
           {
-            "title": "ThinkAny",
-            "description": "AI Search Engine",
-            "url": "https://thinkany.ai",
-            "target": "_blank",
+            "title": "AI Image Generator Landing",
+            "description": "Modern AI tool landing page with gradient backgrounds",
+            "url": "#",
+            "target": "_self",
             "image": {
-              "src": "/imgs/cases/7.png",
-              "alt": "showcases"
+              "src": "https://file.raoedits.org/copyweb/copyweb-ai-image-creator.png",
+              "alt": "AI Image Generator Landing Page"
             },
-            "group": "ai-chatbot"
+            "group": "landing-page"
           },
           {
-            "title": "HeyBeauty",
-            "description": "AI Virtual Try On",
-            "url": "https://heybeauty.ai",
-            "target": "_blank",
+            "title": "Video Blur Tool",
+            "description": "Clean SaaS interface for video processing",
+            "url": "#",
+            "target": "_self",
             "image": {
-              "src": "/imgs/cases/5.png",
-              "alt": "showcases"
+              "src": "https://file.nuwa.run/copyweb/copyweb-example-blurany.png",
+              "alt": "Video Blur Tool Interface"
             },
-            "group": "ai-image"
+            "group": "saas"
           },
           {
-            "title": "AI Wallpaper",
-            "description": "AI Wallpaper Generator",
-            "url": "https://aiwallpaper.shop",
-            "target": "_blank",
+            "title": "Landing Page Creator",
+            "description": "Professional landing page builder interface",
+            "url": "#",
+            "target": "_self",
             "image": {
-              "src": "/imgs/cases/1.png",
-              "alt": "showcases"
+              "src": "https://file.raoedits.org/copyweb/copyweb-landingpage-creator.png",
+              "alt": "Landing Page Creator"
             },
-            "group": "ai-image"
+            "group": "saas"
           },
           {
-            "title": "AI Cover",
-            "description": "AI Cover Generator",
-            "url": "https://aicover.design",
-            "target": "_blank",
+            "title": "AI Image Generator",
+            "description": "Sleek AI tool with modern card-based layout",
+            "url": "#",
+            "target": "_self",
             "image": {
-              "src": "/imgs/cases/2.png",
-              "alt": "showcases"
+              "src": "https://file.raoedits.org/copyweb/copyweb-aiimagegenerator.png",
+              "alt": "AI Image Generator"
             },
-            "group": "ai-image"
+            "group": "landing-page"
           },
           {
-            "title": "GPTs Works",
-            "description": "GPTs Directory",
-            "url": "https://gpts.works",
-            "target": "_blank",
+            "title": "Social Media Platform",
+            "description": "Modern social networking interface",
+            "url": "#",
+            "target": "_self",
             "image": {
-              "src": "/imgs/cases/3.png",
-              "alt": "showcases"
+              "src": "https://file.nuwa.run/copyweb/copyweb-socialweb.png",
+              "alt": "Social Media Platform"
             },
             "group": "other"
           },
           {
-            "title": "Melodisco",
-            "description": "AI Music Player",
-            "url": "https://melodis.co",
-            "target": "_blank",
+            "title": "CopyWeb Hero Section",
+            "description": "Clean hero section with form integration",
+            "url": "#",
+            "target": "_self",
             "image": {
-              "src": "/imgs/cases/4.png",
-              "alt": "showcases"
+              "src": "https://file.raoedits.org/copyweb/copyweb-hero.png",
+              "alt": "CopyWeb Hero Section"
             },
-            "group": "ai-music"
-          },
-          {
-            "title": "Pagen",
-            "description": "AI Landing Page Generator",
-            "url": "https://pagen.so",
-            "target": "_blank",
-            "image": {
-              "src": "/imgs/cases/6.png",
-              "alt": "showcases"
-            },
-            "group": "ai-coding"
-          },
-          {
-            "title": "SoraFM",
-            "description": "AI Video Generator",
-            "url": "https://sorafm.trys.ai",
-            "target": "_blank",
-            "image": {
-              "src": "/imgs/cases/8.png",
-              "alt": "showcases"
-            },
-            "group": "ai-video"
-          },
-          {
-            "title": "PodLM",
-            "description": "AI Podcast Generator",
-            "url": "https://podlm.ai",
-            "target": "_blank",
-            "image": {
-              "src": "/imgs/cases/9.png",
-              "alt": "showcases"
-            },
-            "group": "ai-audio"
+            "group": "landing-page"
           }
         ]
       }

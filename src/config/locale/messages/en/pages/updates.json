@@ -1,14 +1,14 @@
 {
   "metadata": {
-    "title": "Update Logs",
-    "description": "View product update logs, including latest features and improvements."
+    "title": "Update Logs - CopyWeb",
+    "description": "View CopyWeb product updates, including latest features, improvements, and bug fixes."
   },
   "page": {
     "sections": {
       "updates": {
         "id": "updates",
-        "title": "Update Logs",
-        "description": "View product update logs, including latest features and improvements."
+        "title": "CopyWeb Update Logs",
+        "description": "Stay up to date with the latest features, improvements, and bug fixes for CopyWeb."
       }
     }
   }

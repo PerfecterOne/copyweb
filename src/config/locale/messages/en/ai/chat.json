@@ -39,8 +39,7 @@
           {
             "title": "Profile",
             "url": "/settings/profile",
-            "icon": "User",
-            "target": "_blank"
+            "icon": "User"
           }
         ]
       },
@@ -55,8 +54,7 @@
           {
             "title": "Home",
             "url": "/",
-            "icon": "Home",
-            "target": "_blank"
+            "icon": "Home"
           }
         ]
       },

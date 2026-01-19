@@ -18,7 +18,7 @@ export function FeaturesList({
     // Prevent horizontal scrolling
     <section
       className={cn(
-        'overflow-x-hidden py-16 md:py-24',
+        'overflow-x-hidden pt-0 pb-16 md:pt-0 md:pb-24',
         section.className,
         className
       )}
@@ -27,11 +27,27 @@ export function FeaturesList({
         <div className="flex flex-wrap items-center gap-8 pb-12 md:gap-24">
           <ScrollAnimation direction="left">
             <div className="mx-auto w-full max-w-[500px] flex-shrink-0 md:mx-0">
-              <LazyImage
-                src={section.image?.src ?? ''}
-                alt={section.image?.alt ?? ''}
-                className="h-auto w-full rounded-lg object-cover"
-              />
+              {section.video?.src ? (
+                <video
+                  src={section.video.src}
+                  poster={section.video.poster}
+                  controls
+                  loop
+                  autoPlay
+                  muted
+                  playsInline
+                  className="h-auto w-full rounded-lg object-cover"
+                  preload="metadata"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <LazyImage
+                  src={section.image?.src ?? ''}
+                  alt={section.image?.alt ?? ''}
+                  className="h-auto w-full rounded-lg object-cover"
+                />
+              )}
             </div>
           </ScrollAnimation>
           <div className="w-full min-w-0 flex-1">
